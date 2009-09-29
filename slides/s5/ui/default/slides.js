@@ -13,7 +13,7 @@ var s5mode = true;
 var defaultView = 'slideshow';
 var controlVis = 'visible';
 
-var isIE = navigator.appName == 'Microsoft Internet Explorer' && navigator.userAgent.indexOf('Opera') < 1 ? 1 : 0;
+var isIE = navigator.appName == 'Microsoft Internet Explorer' ? 1 : 0;
 var isOp = navigator.userAgent.indexOf('Opera') > -1 ? 1 : 0;
 var isGe = navigator.userAgent.indexOf('Gecko') > -1 && navigator.userAgent.indexOf('Safari') < 1 ? 1 : 0;
 
@@ -530,8 +530,7 @@ function trap(e) {
 
 function startup() {
 	defaultCheck();
-	if (!isOp) 
-		createControls();
+	if (!isOp) createControls();
 	slideLabel();
 	fixLinks();
 	externalLinks();
