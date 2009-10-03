@@ -1,16 +1,23 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" 
-	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+	"http://www.w3.org/MarkUp/DTD/xhtml-rdfa-1.dtd">
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html xmlns="http://www.w3.org/1999/xhtml" 
+      xmlns:doap="http://usefulinc.com/ns/doap#"
+      xmlns:dct="http://purl.org/dc/terms/"
+      xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+      xml:lang="en" lang="en" dir="ltr"
+      xmlns:dc="http://purl.org/dc/elements/1.1/"
+      xmlns:foaf="http://xmlns.com/foaf/0.1/"
+      xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
 
-<head>
+<head profile="http://ns.inria.fr/grddl/rdfa/">
 <title>Music and the Web of Data</title>
 <!-- metadata -->
 <meta name="generator" content="S5" />
 <meta name="version" content="S5 1.1" />
 <meta name="presdate" content="20091026" />
-<meta name="author" content="Kurt Jacobson" />
-<meta name="company" content="Queen Mary University of London" />
+<meta name="author" content="Matwod Team" />
+<meta name="company" content="Queen Mary University of London and BBC" />
 <!-- configuration parameters -->
 <meta name="defaultView" content="slideshow" />
 <meta name="controlVis" content="hidden" />
@@ -42,15 +49,21 @@
 <h3>Share and share alike<br/>
 You can say anything about Music on the Web of Data</h3>
 <h2>Tutorial PM2 - ISMIR 2009 Kobe Japan</h2>
-<p><b>Kurt Jacobson and George Fazekas</b><br/>Centre for Digital Music, Queen Mary University of London</p>
-<p><b>Yves Raimond and Michael Smethurst</b><br/>BBC</p>
+<div rel="maker">
+<p><span about="http://kurtisrandom.com/foaf.rdf#kurtjx" typeof="Person"><a href="http://kurtisrandom.blogspot.com" rel="blog" property="name">Kurt Jacobson</a></span> and George Fazekas - <a href="http://www.elec.qmul.ac.uk/digitalmusic/" rel="workplaceHomepage">C4DM QMUL</a></p>
+<p> 
+</span><span about="http://moustaki.org/foaf.rdf#moustaki" typeof="Person"><a href="http://blog.dbtune.org/" rel="blog" property="name">Yves Raimond</a></span> and Michael Smethurst - <a href="http://bbc.co.uk" rel="workplaceHomepage">BBC</a></p>
+</div>
+<!--<p><b>Kurt Jacobson and George Fazekas</b><br/>Centre for Digital Music, Queen Mary University of London</p>
+<p><b>Yves Raimond and Michael Smethurst</b><br/>BBC</p>-->
+<p>follow along at <a href="http://ismir2009.dbtune.org/slides/matwod.html">http://ismir2009.dbtune.org/slides/matwod.html</a></p>
 </div>
 
 
 <div id="way" class="slide">
 <h1>RDF is the way forward</h1>
 <p>There are three basic reasons we love RDF</p>
-<ul>
+<ul class="incremental">
 <li>interoperability</li>
 <li>extensibility</li>
 <li>queryability</li>
@@ -88,11 +101,11 @@ You can say anything about Music on the Web of Data</h3>
 
 <div class="slide">
 <h1>There are several RDF serialization formats</h1>
-<ul class="">
-  <li class="">XML</li>
-  <li class="">Notation 3 (N3)</li>
-  <li class="">Turtle</li>
-  <li class="">N Triples</li>
+<ul>
+  <li>XML</li>
+  <li>Notation 3 (N3)</li>
+  <li>Turtle</li>
+  <li>N Triples</li>
 </ul>
 </div>
 
