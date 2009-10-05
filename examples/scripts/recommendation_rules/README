@@ -1,0 +1,18 @@
+Example Linked Data driven recommendations, using rqommend by Yves Raimond
+
+
+
+DESCRIPTION
+
+Declares some recommendation rules in the form of SPARQL queries, and apply them to artist resources to generate recommendations
+
+
+
+RUN
+
+Install the two necessary Ruby gems by running:
+$ ./install_gems.sh
+
+Then run the script:
+$ ruby example_recommendations.rb
+
