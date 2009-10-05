@@ -1,7 +1,18 @@
-Here you will find code examples related to the ISMIR 2009 tutorial -
-	Music and the Web of Data - for more information please visit the
-	tutorial website at http://ismir2009.dbtune.org/
+Here you will find code examples and the slides of the ISMIR 2009 tutorial - Music and the Web of Data - for more information please visit the tutorial website at http://ismir2009.dbtune.org/
 
-@authors: kurtjx and others (hopefully)
+@authors: Kurt Jacobson, Yves Raimond, Michael Smethurst, George Fazekas
 @contact: kurtjx at gmail
 
+The files are organised as follows:
+
+    slides/
+    The slides used at the tutorial
+
+    examples/
+    A set of examples, illustrating different things mentioned in the tutorial
+
+        rdf/
+        RDF examples, describing various musical information in RDF
+
+        scripts/
+        Small pieces of working code, illustrating music-relatd things that can be done with Linked Data
