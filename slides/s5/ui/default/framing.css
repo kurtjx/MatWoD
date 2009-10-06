@@ -12,7 +12,7 @@ div#footer {top: auto; bottom: 0; height: 2.5em; z-index: 5;}
 div#controls {left: 50%; bottom: 0; width: 50%; z-index: 100;}
 div#controls form {position: absolute; bottom: 0; right: 0; width: 100%;
   margin: 0;}
-#currentSlide {position: absolute; width: 10%; left: 45%; bottom: 1em; z-index: 10;}
+#currentSlide {position: absolute; width: 10%; left: 90%; bottom: 1em; z-index: 10;}
 html>body #currentSlide {position: fixed;}
 
 /*
