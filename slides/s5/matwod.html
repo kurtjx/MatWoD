@@ -84,6 +84,11 @@ You can say anything about Music on the Web of Data</h3>
 	</div>
 </div>
 
+<div id="evans" class="slide">
+	<h1>Bill Evans - Waltz with RDF</h1>
+	<center><img src="resources/billevans.jpg" alt="Bill Evans" height="100%"/></center>
+</div>
+
 <div class="slide">
 	<h1>For example:</h1>
 	<p class="">the musical genre <b><i>hard bop jazz</i></b> has the URI:<br/><center>
@@ -218,6 +223,7 @@ foo:Bill_Evans bar:genre foo:Hard_bop .
 @prefix dc: &lt;http://purl.org/dc/terms/&gt; .
 @prefix foaf: &lt;http://xmlns.com/foaf/0.1/&gt; .
 @prefix mo: &lt;http://purl.org/ontology/mo/&gt; .
+
 </code></pre>
 	<p class="incremental">WARNING: such prefixes must still be specified locally
 	<center>try using <a href="http://prefix.cc">http://prefix.cc</a> to lookup prefixes</center></p>
@@ -237,7 +243,8 @@ dbpedia:Bill_Evans dbpo:birthName "William John Evans"@en .
 dbpedia:Bill_Evans dbpo:birthdate "1929-08-16"^^xsd:date .
 dbpedia:Bill_Evans rdf:type mo:MusicArtist .
 dbpedia:Bill_Evans rdf:type foaf:Person .
-</pre></code>
+
+</code></pre>
 <p>Notice we provide his <code>birthName</code> and <code>birthdate</code> as a literals</p>
 </div>
 
@@ -249,13 +256,17 @@ dbpedia:Bill_Evans rdf:type foaf:Person .
 @prefix mo: &lt;http://purl.org/ontology/mo/&gt; .
 @prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .
 
-dbpedia:Bill_Evans dbpo:genre dbpedia:Hard_bop .
+dbpedia:Bill_Evans dbpo:genre dbpedia:Hard_bop ;
   dbpo:birthName "William John Evans"@en ;
   dbpo:birthdate "1929-08-16"^^xsd:date ;
-  a mo:MusicArtist, foaf:Person .</pre></code>
-<p><code>rdf:type</code> can be replaced by <code>a</code> - this is in the spec and should always work<br/>
-we use the <code>;</code> to chain multiple predicate-object pairs to one subject<br/>
-we use the <code>,</code> to chain multiple objects to one subject-predicate pair</p>
+  a mo:MusicArtist, foaf:Person .
+
+</code></pre>
+<ul>
+	<li><code>rdf:type</code> can be replaced by <code>a</code></li>
+<li>we use the <code>;</code> to chain multiple predicate-object pairs to one subject</li>
+<li>we use the <code>,</code> to chain multiple objects to one subject-predicate pair</li>
+</ul>
 </div>
 
 <div id="sparql0" class="slide">
@@ -300,10 +311,11 @@ we use the <code>,</code> to chain multiple objects to one subject-predicate pai
 <div id="sparql1" class="slide">
 	<h1>A simple SPARQL query example</h1>
 	<p>SPARQL syntax is a relatively intuitive mashup of traditional SQL and Turtle</p>
-	<code><pre>
+	<pre><code>		
 SELECT ?foo ?bar 
   WHERE { &lt;http://dbpedia.org/resource/Bill_Evans&gt; ?foo ?bar . }
-</pre></code>
+
+</code></pre>
 	<p>this will return all triples in the store with Bill Evans as the subject</p>
 	<p>terms beginning with <code>?</code> are <a href="http://en.wikipedia.org/wiki/Existential_quantification">
 		existentially quantified</a> variables</p>
@@ -337,21 +349,36 @@ WHERE {
     ...
 }
 <span class="comment"># query modifiers</span>
-ORDER BY ...</pre></code>
+ORDER BY ...
+
+</code></pre>
 </div>
 
 <div id="sparql4" class="slide">
 	<h1>SPARQL query example</h1>
 	<p>as in Turtle we can use the keyword <code>PREFIX</code></p>
-	<code><pre>
+	<pre><code>
 PREFIX dbpedia: &lt;http://dbpedia.org/resource/Bill_Evans&gt;
 SELECT ?p ?o 
   WHERE { dbpedia:Bill_Evans ?p ?o . }
-</pre></code>
+
+</code></pre>
 	<p>notice we don't need the <code>@</code> and <code>.</code> around the <code>PREFIX</code> keyword</p>
 </div>
-    
 
+<div id="sparql-challenge" class="slide">
+	<h1>Challenge</h1>
+	<p><center>Can you find all the Jazz artists from New Jersey who play piano?</center></p>
+	<img src="resources/njsky.jpg" alt="Photo by http://www.flickr.com/photos/mcsimon/" width="100%"/>
+	
+</div>
+    
+<div id="transition" class="slide">
+	<h1>Now for some MO</h1>
+	<div style="position:absolute; top:200%; left:15%">
+	<p>Let's now discuss the <a href="mo.html">Music Ontology</a></p>
+	</div>
+</div>
 <!-- end presentation -->
 </div>
 </body>
