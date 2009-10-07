@@ -65,7 +65,7 @@ You can say anything about Music on the Web of Data</h3>
 		<li>Semantic Web</li>
 		<li>Linked Data</li>
 	</ul>
-	<p class="incremental">Some might argue there are subtle differences, but basically these are just different names for the same meme</p>
+	<p class="incremental">There are subtle differences, but basically these are just different names for the same meme</p>
 	<p class="small incremental">actually most people involved seem to prefer the term Linked Data</p>
 </div>
 
@@ -74,25 +74,29 @@ You can say anything about Music on the Web of Data</h3>
 	<div style="position:absolute; top:120%">
 	<p class="incremental">
 		<span class="big">Everything</span> whether thing, concept, or property
-		gets a <span class="big">URI</span>
+		gets a <a href="http://en.wikipedia.org/wiki/Uniform_Resource_Identifier" class="big">URI</a>
 	</p>
 		<p class="indent incremental small">functionally, this is pretty much the same as an http URL</p>
 	<br/>
 	<p class="incremental">Then we use <a class="big" href="http://www.w3.org/RDF/">RDF</a> 
 		triples to connect concepts and properties to make statements</p>
+	<center class="incremental">That's it!</center>
 	</div>
 </div>
 
 <div class="slide">
 	<h1>For example:</h1>
-	<p class="">the musical genre "hard bop jazz" has the URI:<br/><center>
-		&lt;<a href="http://dbpedia.org/resource/Hard_bop">http://dbpedia.org/resource/Hard_bop</a>&gt;</center>
+	<p class="">the musical genre <b><i>hard bop jazz</i></b> has the URI:<br/><center>
+		<code>&lt;<a href="http://dbpedia.org/resource/Hard_bop">http://dbpedia.org/resource/Hard_bop</a>&gt;</code>
+		</center>
 		</p>
-	<p class="">and the music artist Bill Evans has the URI:<br/><center>
-		&lt;<a href="http://dbpedia.org/resource/Bill_Evans">http://dbpedia.org/resource/Bill_Evans</a>&gt;</center>
+	<p class="">and the music artist <b><i>Bill Evans</i></b> has the URI:<br/><center>
+		<code>&lt;<a href="http://dbpedia.org/resource/Bill_Evans">http://dbpedia.org/resource/Bill_Evans</a>&gt;</code>
+		</center>
 		</p>
-	<p class="">and the property "has genre" has the URI:<br/><center>
-		&lt;<a href="http://dbpedia.org/ontology/genre">http://dbpedia.org/ontology/genre</a>&gt;</center>
+	<p class="">and the property <b><i>has genre</i></b> has the URI:<br/><center>
+		<code>&lt;<a href="http://dbpedia.org/ontology/genre">http://dbpedia.org/ontology/genre</a>&gt;</code>
+		</center>
 		</p>
 </div>
 
@@ -100,13 +104,13 @@ You can say anything about Music on the Web of Data</h3>
 	<h1>For example:</h1>
 	<p>We can use RDF to say "Bill Evans' musical genre is hard bop jazz"</p>
 	<p class="indent">
-		&lt;<a href="http://dbpedia.org/resource/Bill_Evans">http://dbpedia.org/resource/Bill_Evans</a>&gt;
+		<code>&lt;<a href="http://dbpedia.org/resource/Bill_Evans">http://dbpedia.org/resource/Bill_Evans</a>&gt;</code>
 	</p>
 	<p style="margin-left:16%">
-		&lt;<a href="http://dbpedia.org/ontology/genre">http://dbpedia.org/ontology/genre</a>&gt;
+		<code>&lt;<a href="http://dbpedia.org/ontology/genre">http://dbpedia.org/ontology/genre</a>&gt;</code>
 		</p>
 	<p style="margin-left:22%">
-		&lt;<a href="http://dbpedia.org/resource/Hard_bop">http://dbpedia.org/resource/Hard_bop</a>&gt; . 
+		<code>&lt;<a href="http://dbpedia.org/resource/Hard_bop">http://dbpedia.org/resource/Hard_bop</a>&gt; . </code>
 		</p>
 	
 	<p class="incremental"><center>We've made our first triple!</center></p>
@@ -138,24 +142,14 @@ insert more in depth intro to Linked Data here <br/> Michael's slides? <br/> ski
 </div>
 
 <div class="slide">
-<h1>Serialization</h1>
-<p>There are several RDF serialization formats</p>
-<ul>
-  <li>XML</li>
-  <li>Notation 3 (N3)</li>
-  <li>Turtle</li>
-  <li>N Triples</li>
-  <li>JSON</li>
-</ul>
-</div>
-
-<div class="slide">
+	<h1>Serializations continued</h1>
   <p> recall the non-XML serialization formats...</p>
   <p> note that:</p>
   <center><p class="big">N-Triples &sub; Turtle &sub; N3</p></center>
 </div>
 
 <div class="slide">
+	<h1>Serializations continued</h1>
   <p> recall the non-XML serialization formats...</p>
   <p> note that:</p>
   <center><p class="big">N-Triples &sub; <b>Turtle</b> &sub; N3</p></center>
@@ -173,9 +167,16 @@ insert more in depth intro to Linked Data here <br/> Michael's slides? <br/> ski
 <div id="ttl0" class="slide">
 	<h1>Simple Turtle example</h1>
 	<p>Let's revisit Bill Evans</p>
-	<code>
-		&lt;http://dbpedia.org/resource/Bill_Evans&gt; &lt;http://dbpedia.org/ontology/genre&gt; &lt;http://dbpedia.org/resource/Hard_bop&gt; .
-	</code>
+	<p class="indent">
+		<code>&lt;<a href="http://dbpedia.org/resource/Bill_Evans">http://dbpedia.org/resource/Bill_Evans</a>&gt;</code>
+	</p>
+	<p style="margin-left:16%">
+		<code>&lt;<a href="http://dbpedia.org/ontology/genre">http://dbpedia.org/ontology/genre</a>&gt;</code>
+		</p>
+	<p style="margin-left:22%">
+		<code>&lt;<a href="http://dbpedia.org/resource/Hard_bop">http://dbpedia.org/resource/Hard_bop</a>&gt; . </code>
+		</p>
+	<p class="incremental">again, this triple states "Bill Evans has genre hard bop"</p>
 	<p class="incremental">simple! but these URIs are annoyingly long :-(</p>
 </div>
 
@@ -284,6 +285,7 @@ we use the <code>,</code> to chain multiple objects to one subject-predicate pai
 </div>
 
 <div id="sparql02" class="slide">
+	<h1>SPARQL store implementations</h1>
 	<p>Even better there are several open-source scalable RDF stores that support SPARQL</p>
 	<ul>
 		<li> Openlink's 
@@ -296,8 +298,8 @@ we use the <code>,</code> to chain multiple objects to one subject-predicate pai
 </div>
 
 <div id="sparql1" class="slide">
-	<h1>A simple SPARQL query</h1>
-	<p>SPARQL is a relatively intuitive mashup of traditional SQL and Turtle</p>
+	<h1>A simple SPARQL query example</h1>
+	<p>SPARQL syntax is a relatively intuitive mashup of traditional SQL and Turtle</p>
 	<code><pre>
 SELECT ?foo ?bar 
   WHERE { &lt;http://dbpedia.org/resource/Bill_Evans&gt; ?foo ?bar . }
@@ -309,6 +311,7 @@ SELECT ?foo ?bar
 </div>
 
 <div id="sparql2" class="slide">
+	<h1>SPARQL - basic syntax</h1>
 	<ul>
 		<li>Prefix declarations, for abbreviating URIs</li>
     	<li>Dataset definition, stating what RDF graph(s) are being queried</li>
@@ -319,6 +322,7 @@ SELECT ?foo ?bar
 </div>
 
 <div id="sparql3" class="slide">
+	<h1>SPARQL - basic syntax</h1>
 <pre><code>
 <span class="comment"># prefix declarations</span>
 PREFIX foo: &lt;http://example.com/resources/&gt;
@@ -334,6 +338,17 @@ WHERE {
 }
 <span class="comment"># query modifiers</span>
 ORDER BY ...</pre></code>
+</div>
+
+<div id="sparql4" class="slide">
+	<h1>SPARQL query example</h1>
+	<p>as in Turtle we can use the keyword <code>PREFIX</code></p>
+	<code><pre>
+PREFIX dbpedia: &lt;http://dbpedia.org/resource/Bill_Evans&gt;
+SELECT ?p ?o 
+  WHERE { dbpedia:Bill_Evans ?p ?o . }
+</pre></code>
+	<p>notice we don't need the <code>@</code> and <code>.</code> around the <code>PREFIX</code> keyword</p>
 </div>
     
 
