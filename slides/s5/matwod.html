@@ -54,9 +54,72 @@ You can say anything about Music on the Web of Data</h3>
 <p> 
 </span><span about="http://moustaki.org/foaf.rdf#moustaki" typeof="foaf:Person"><a href="http://blog.dbtune.org/" rel="foaf:weblog" property="name">Yves Raimond</a></span> and Michael Smethurst - <a href="http://bbc.co.uk" rel="foaf:workplaceHomepage">BBC</a></p>
 </div>
-<!--<p><b>Kurt Jacobson and George Fazekas</b><br/>Centre for Digital Music, Queen Mary University of London</p>
-<p><b>Yves Raimond and Michael Smethurst</b><br/>BBC</p>-->
 <p>follow along at <a href="http://ismir2009.dbtune.org/slides/matwod.html">http://ismir2009.dbtune.org/slides/matwod.html</a></p>
+</div>
+
+<div class="slide">
+	<h1>What is this all about?</h1>
+	<p>You've probably heard terms like</p>
+	<ul class="incremental">
+		<li>Web of Data</li>
+		<li>Semantic Web</li>
+		<li>Linked Data</li>
+	</ul>
+	<p class="incremental">Some might argue there are subtle differences, but basically these are just different names for the same meme</p>
+	<p class="small incremental">actually most people involved seem to prefer the term Linked Data</p>
+</div>
+
+<div class="slide">
+	<h1>Put simply...</h1>
+	<div style="position:absolute; top:120%">
+	<p class="incremental">
+		<span class="big">Everything</span> whether thing, concept, or property
+		gets a <span class="big">URI</span>
+	</p>
+		<p class="indent incremental small">functionally, this is pretty much the same as an http URL</p>
+	<br/>
+	<p class="incremental">Then we use <a class="big" href="http://www.w3.org/RDF/">RDF</a> 
+		triples to connect concepts and properties to make statements</p>
+	</div>
+</div>
+
+<div class="slide">
+	<h1>For example:</h1>
+	<p class="">the musical genre "hard bop jazz" has the URI:<br/><center>
+		&lt;<a href="http://dbpedia.org/resource/Hard_bop">http://dbpedia.org/resource/Hard_bop</a>&gt;</center>
+		</p>
+	<p class="">and the music artist Bill Evans has the URI:<br/><center>
+		&lt;<a href="http://dbpedia.org/resource/Bill_Evans">http://dbpedia.org/resource/Bill_Evans</a>&gt;</center>
+		</p>
+	<p class="">and the property "has genre" has the URI:<br/><center>
+		&lt;<a href="http://dbpedia.org/ontology/genre">http://dbpedia.org/ontology/genre</a>&gt;</center>
+		</p>
+</div>
+
+<div class="slide">
+	<h1>For example:</h1>
+	<p>We can use RDF to say "Bill Evans' musical genre is hard bop jazz"</p>
+	<p class="indent">
+		&lt;<a href="http://dbpedia.org/resource/Bill_Evans">http://dbpedia.org/resource/Bill_Evans</a>&gt;
+	</p>
+	<p style="margin-left:16%">
+		&lt;<a href="http://dbpedia.org/ontology/genre">http://dbpedia.org/ontology/genre</a>&gt;
+		</p>
+	<p style="margin-left:22%">
+		&lt;<a href="http://dbpedia.org/resource/Hard_bop">http://dbpedia.org/resource/Hard_bop</a>&gt; . 
+		</p>
+	
+	<p class="incremental"><center>We've made our first triple!</center></p>
+</div>
+
+<div class="slide">
+	<h1>So what's possible?</h1>
+	<img src="resources/musichackday.jpg" alt="music hack day London"/>
+	<div style="position: absolute; top: 20%; left: 60%; width:30%; ">
+		<p>Music hack day, London</p>
+		<p>The <a href="http://london.musichackday.org/index.php?page=MusicBore">MusicBore</a> 
+			the grand-prize-winning hack used the Web of Linked Data!</p>
+	</div>
 </div>
 
 
@@ -68,62 +131,213 @@ You can say anything about Music on the Web of Data</h3>
 <li>extensibility</li>
 <li>queryability</li>
 </ul>
-<div class="handout">
-[any material that should appear in print but not on the slide]
-</div>
-</div>
-
-<div id="overview" class="slide">
-<h1>tutorial macro structure DRAFT</h1>
-<p>the tutorial will follow this general structure</p>
-<ul>
-  <li>What is Linked Data? (very brief) and Super sexy demo (Musicbore?)</li>
-  <li>Exactly what is Linked Data, RDF, Semantic Web, etc? (less brief, poached from skim-read? end w/ Turtle and SPARQL)</li>
-  <li>My first SPARQL query (all Jazz artists from New Jersey)</li>
-  <li>Build your own FOAF file - demo/theory/hands on</li>
-  <li>Jamendo artist recommender - demo/theory/hands on</li>
-  <li>Audio features and VAMPy - demo/theory/hands on</li>
-  <li>Left over time we stall - indepth how Musicbore works? Kurt does yoyo tricks?</li>
-</ul>
-</div>
-
-
-<div class="slide">
-<h1>tutorial micro structure DRAFT</h1>
-<p>the micro structure of the tutorial will follow this pattern</p>
-<ul>
-<li>demo - look at the cool stuff you can do</li>
-<li>theory - this is why it works and what we're doing</li>
-<li>hands on - this is how you do it, give it a go</li>
-</ul>
-</li>
 </div>
 
 <div class="slide">
-<h1>There are several RDF serialization formats</h1>
+insert more in depth intro to Linked Data here <br/> Michael's slides? <br/> skim-read slides? <br/> explain dbpedia somewhere in here?
+</div>
+
+<div class="slide">
+<h1>Serialization</h1>
+<p>There are several RDF serialization formats</p>
 <ul>
   <li>XML</li>
   <li>Notation 3 (N3)</li>
   <li>Turtle</li>
   <li>N Triples</li>
+  <li>JSON</li>
 </ul>
 </div>
 
 <div class="slide">
   <p> recall the non-XML serialization formats...</p>
   <p> note that:</p>
-  <p class="big">N-Triples &sub; Turtle &sub; N3</p>
+  <center><p class="big">N-Triples &sub; Turtle &sub; N3</p></center>
 </div>
 
 <div class="slide">
   <p> recall the non-XML serialization formats...</p>
   <p> note that:</p>
-  <p class="big">N-Triples &sub; <b>Turtle</b> &sub; N3</p>
+  <center><p class="big">N-Triples &sub; <b>Turtle</b> &sub; N3</p></center>
+  <p> what we've seen so far has all been Turtle (Terse RDF Triple Language) and we'll pretty much stick with that</p>
 </div>
 
+<div id="venn" class="slide">
+	<h1 style="display:none">RDF serialization venn diagram</h1>
+	<center>
+	<img src="http://www.w3.org/DesignIssues/diagrams/n3/venn" alt="RDF serialization venn diagram" 
+	 height="80%"/>
+	</center>
+</div>
+
+<div id="ttl0" class="slide">
+	<h1>Simple Turtle example</h1>
+	<p>Let's revisit Bill Evans</p>
+	<code>
+		&lt;http://dbpedia.org/resource/Bill_Evans&gt; &lt;http://dbpedia.org/ontology/genre&gt; &lt;http://dbpedia.org/resource/Hard_bop&gt; .
+	</code>
+	<p class="incremental">simple! but these URIs are annoyingly long :-(</p>
+</div>
+
+<div id="ttl1" class="slide">
+	<h1>Let's add some prefixes</h1>
+	<p>We can use the <code>@prefix</code> key word to create some shortcuts</p>
+	<pre><code>
+@prefix dbpedia: &lt;http://dbpedia.org/resource/&gt; .
+@prefix dbpedia-owl: &lt;http://dbpedia.org/ontology/&gt; .
+		
+dbpedia:Bill_Evans dbpedia-owl:genre dbpedia:Hard_bop .
+	</code></pre>
+	<p>notice we remove the <code>&lt;</code> and <code>&gt;</code> characters surrounding the URIs</p>
+	<p>URIs in this form are <i>compact</i> URIs or <a href="http://www.w3.org/TR/2007/WD-curie-20070307/#sec_1.1.1.">
+		CURIEs</a></p>
+</div>		
+
+<div id="ttl2" class="slide">
+	<h1>More on prefixes</h1>
+	<p>Note the name of the prefix is arbitrary and we define it locally in our serialization</p>
+	<p>we could use any prefix we want</p>
+	<pre><code>
+@prefix foo: &lt;http://dbpedia.org/resource/&gt; .
+@prefix bar: &lt;http://dbpedia.org/ontology/&gt; .
+
+foo:Bill_Evans bar:genre foo:Hard_bop .
+	</code></pre>
+	<p>and the meaning is exactly the same</p>
+	<p class="incremental indent">however...</p>
+</div>
+
+<div id="ttl3" class="slide">
+	<h1>Even more on prefixes</h1>
+	<p>There are some vocabularies and namespaces that are commonly associated with a particular prefix by convention</p>
+	<pre><code>
+@prefix rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt; .
+@prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .
+@prefix owl: &lt;http://www.w3.org/2002/07/owl#&gt; .
+@prefix dc: &lt;http://purl.org/dc/terms/&gt; .
+@prefix foaf: &lt;http://xmlns.com/foaf/0.1/&gt; .
+@prefix mo: &lt;http://purl.org/ontology/mo/&gt; .
+</code></pre>
+	<p class="incremental">WARNING: such prefixes must still be specified locally
+	<center>try using <a href="http://prefix.cc">http://prefix.cc</a> to lookup prefixes</center></p>
+</div>
+
+<div id="ttl4" class="slide">
+	<h1>Back to Bill</h1>
+	<pre><code>
+@prefix dbpedia: &lt;http://dbpedia.org/resource/&gt; .
+@prefix dbpo: &lt;http://dbpedia.org/ontology/&gt; .
+@prefix mo: &lt;http://purl.org/ontology/mo/&gt; .
+@prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .
+@prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .
+
+dbpedia:Bill_Evans dbpo:genre dbpedia:Hard_bop .
+dbpedia:Bill_Evans dbpo:birthName "William John Evans"@en .
+dbpedia:Bill_Evans dbpo:birthdate "1929-08-16"^^xsd:date .
+dbpedia:Bill_Evans rdf:type mo:MusicArtist .
+dbpedia:Bill_Evans rdf:type foaf:Person .
+</pre></code>
+<p>Notice we provide his <code>birthName</code> and <code>birthdate</code> as a literals</p>
+</div>
+
+<div id="ttl5" class="slide">
+	<h1>Bill Evans final ttl</h1>
+		<pre><code>
+@prefix dbpedia: &lt;http://dbpedia.org/resource/&gt; .
+@prefix dbpo: &lt;http://dbpedia.org/ontology/&gt; .
+@prefix mo: &lt;http://purl.org/ontology/mo/&gt; .
+@prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .
+
+dbpedia:Bill_Evans dbpo:genre dbpedia:Hard_bop .
+  dbpo:birthName "William John Evans"@en ;
+  dbpo:birthdate "1929-08-16"^^xsd:date ;
+  a mo:MusicArtist, foaf:Person .</pre></code>
+<p><code>rdf:type</code> can be replaced by <code>a</code> - this is in the spec and should always work<br/>
+we use the <code>;</code> to chain multiple predicate-object pairs to one subject<br/>
+we use the <code>,</code> to chain multiple objects to one subject-predicate pair</p>
+</div>
+
+<div id="sparql0" class="slide">
+	<h1>Let's get to SPARQL</h1>
+	<p>SPARQL is really exciting query language for RDF</p>
+	<ul>
+		<li>pronounced "sparkle"</li>
+		<li><b>S</b>PARQL <b>P</b>rotocol and <b>R</b>DF <b>Q</b>uery <b>L</b>anguage</li>
+		<li>On 15 January 2008, SPARQL became an official <a href="http://www.w3.org/TR/rdf-sparql-query/">
+			W3C Recommendation</a></li>
+		<li>allows one to perform complex joins of disparate databases in a single, simple query</li>
+		<li>query for triple patterns using conjunction, disjunction, and optional patterns</li>
+			
+	</ul>
+</div>
+
+<div id="sparql01" class="slide">
+	<h1>SPARQL implementations</h1>
+	<p>There are SPARQL implementations for most popular programming languages</p> 
+		<ul>
+			<li>Redland's <a href="http://librdf.org/rasqal/">Rasqal</a> (C with bindings for Python, Ruby, PHP and others)
+			</li>
+			<li>Jena's <a href="http://jena.sourceforge.net/ARQ/">ARQ</a> (Java)</li>
+			<li><a href="http://rdflib.net/">RDFLib</a> (Python)</li>
+			<li>and many others</li>
+		</ul>
+</div>
+
+<div id="sparql02" class="slide">
+	<p>Even better there are several open-source scalable RDF stores that support SPARQL</p>
+	<ul>
+		<li> Openlink's 
+		<a href="http://virtuoso.openlinksw.com/dataspace/dav/wiki/Main/">Virtuoso</a></li>
+		<li>Garlik's 
+		<a href="http://4store.org">4Store</a></li> 
+		<li><a href="http://www4.wiwiss.fu-berlin.de/bizer/d2r-server/">D2R Server</a></li>
+		<li> and others</li>
+	</ul>
+</div>
+
+<div id="sparql1" class="slide">
+	<h1>A simple SPARQL query</h1>
+	<p>SPARQL is a relatively intuitive mashup of traditional SQL and Turtle</p>
+	<code><pre>
+SELECT ?foo ?bar 
+  WHERE { &lt;http://dbpedia.org/resource/Bill_Evans&gt; ?foo ?bar . }
+</pre></code>
+	<p>this will return all triples in the store with Bill Evans as the subject</p>
+	<p>terms beginning with <code>?</code> are <a href="http://en.wikipedia.org/wiki/Existential_quantification">
+		existentially quantified</a> variables</p>
+	<center>let's try it out at <a href="http://dbpedia.org/snorql">http://dbpedia.org/snorql</a></center>
+</div>
+
+<div id="sparql2" class="slide">
+	<ul>
+		<li>Prefix declarations, for abbreviating URIs</li>
+    	<li>Dataset definition, stating what RDF graph(s) are being queried</li>
+		<li>A result clause, identifying what information to return from the query</li>
+		<li>The query pattern, specifying what to query for in the underlying dataset</li>
+		<li>Query modifiers, slicing, ordering, and otherwise rearranging query results</li>
+	</ul>
+</div>
+
+<div id="sparql3" class="slide">
+<pre><code>
+<span class="comment"># prefix declarations</span>
+PREFIX foo: &lt;http://example.com/resources/&gt;
+...
+<span class="comment"># dataset definition</span>
+FROM ...
+<span class="comment"># result clause</span>
+SELECT ...
+<span class="comment"># query pattern</span>
+
+WHERE {
+    ...
+}
+<span class="comment"># query modifiers</span>
+ORDER BY ...</pre></code>
+</div>
+    
 
 <!-- end presentation -->
 </div>
-
 </body>
 </html>
