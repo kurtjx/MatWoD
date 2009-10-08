@@ -1,0 +1,18 @@
+@prefix mo: <http://purl.org/ontology/mo/>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix event: <http://purl.org/NET/c4dm/event.owl#>.
+@prefix : <#>.
+
+:rec a mo:Recording;
+  rdfs:label "live recording of my band in studio";
+  event:sub_event :guitar1, :guitar2, :drums1, :kick1, :sing.
+
+:sing a mo:Recording;
+  rdfs:label "Voice recorded with a SM57";
+  event:factor :sm57;
+  event:place [rdfs:label "Middle of the room"].
+
+:kick1 a mo:Recording;
+  rdfs:label "Kick drum using a Shure PG52";
+  event:factor :pg52;
+  event:place [rdfs:label "Kick drum microphone location"].
