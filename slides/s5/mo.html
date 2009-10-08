@@ -73,6 +73,7 @@
 <li>Music creation workflow</li>
 <li>Temporal annotations and event decomposition</li>
 </ul>
+<p>Creating web identifiers for commonly used concepts in the music domain...</p>
 </div>
 
 <div id="mo-examples-1" class="slide">
@@ -323,10 +324,60 @@
 
 <!-- Visualising using Sonic Visualiser or ClioPatria?? -->
 
+<div id="mo-extensibility-1" class="slide">
+<h1>Breaking artificial domain boundaries</h1>
+<center><img src="resources/silos.jpg"/></center>
+</div>
+
+<div id="mo-extensibility-2" class="slide">
+<h1>Extensibility</h1>
+<ul>
+<li>URIs from different ontologies can be mixed and mashed</li>
+<li>There are ontologies for almost everything...</li>
+<li>...and if a domain missing, <a href="http://vocamp.org/">make one</a></li>
+</ul>
+</div>
+
+<div id="mo-extensibility-3" class="slide">
+<h1>Artists and geolocation</h1>
+<p class="">
+<pre><code>
+&lt;http://dbtune.org/jamendo/artist/5&gt;
+     a
+      &lt;http://purl.org/ontology/mo/MusicArtist&gt; .
+
+
+&lt;http://dbtune.org/jamendo/artist/5&gt; 
+    &lt;http://xmlns.com/foaf/0.1/based_near&gt; 
+       &lt;http://sws.geonames.org/2991627/&gt; .
+
+
+&lt;http://sws.geonames.org/2991627/&gt; 
+    a
+      &lt;http://www.geonames.org/ontology#Feature&gt;
+</code></pre>
+</p>
+</div>
+
+<div id="mo-extensibility-4" class="slide">
+<h1>Why does it matter?</h1>
+<p>Compare that to other metadata formats...</p>
+<p>Most of them are geared towards a specific application, preventing extensibility</p>
+<p>The metadata format limits the <i>context</i> in which it can be used</p>
+<ul>
+<li>XSPF: playlisting</li>
+<li>MPEG-7: temporal annotations</li>
+<li>AceXML: machine learning</li>
+<li>WGS-84: geolocation</li>
+</ul>
+<p>Using RDF, you can pick concepts from different places to adapt to any context</p>
+</div>
+
 <div id="credits" class="slide">
 <h1>Image credits</h1>
 <p><a href="http://www.flickr.com/photos/selva/6730463/">Selva</a></p>
 <p><a href="http://www.flickr.com/photos/nachomerlo/2508460104/">Nachomerlo</a></p>
+<p><a href="http://www.flickr.com/photos/zoomzoom/304135268/">ZoomZoom</a></p>
 </div>
 
 <!-- end presentation -->
