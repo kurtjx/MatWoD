@@ -137,7 +137,7 @@
 </div>
 
 <div id="mo-examples-1" class="slide">
-<h1>Trout Quintet</h1>
+<h1>Trout Quintet (1)</h1>
 <p class="">
 <pre><code>
 :work
@@ -190,10 +190,69 @@
 <p>In the same way, we can describe more complex things:</p>
 <ul>
 <li>Annotations of an audio signal</li>
-<li>Events happening during a performance</li>
+<li>Events happening during a performance or a recording</li>
 <li>Symbolic information</li>
 <li>Alignements between multiple timelines</li>
 </ul>
+<p><a href="http://wiki.musicontology.com/index.php/Examples">More examples</a></p>
+</div>
+
+<div id="mo-examples-4" class="slide">
+<h1>Structural annotations (1)</h1>
+<p class=""> 
+<pre><code>
+:signal owl:sameAs &lt;http://dbtune.org/musicbrainz/resource/
+                        signal/eb20ee61-414f-4eee-8dce-190db516a466&gt;.
+:signal mo:time [
+     tl:duration "PT2M14S";
+     tl:timeline :tl;
+  ].
+</code></pre>
+</p>
+</div>
+
+<div id="mo-examples-5" class="slide">
+<h1>Structural annotations (2)</h1>
+<p class="">
+<pre><code>
+:chorus1 a ps:Chorus;
+     rdfs:label "First chorus";
+     event:time [
+        tl:timeline :tl;
+        tl:start "PT0S";
+        tl:duration "PT9S";
+     ].
+
+:verse1 a ps:Verse;
+     rdfs:label "First verse";
+     event:time [
+        tl:timeline :tl;
+        tl:start "PT9S";
+        tl:duration "PT33S";
+     ].
+</code></pre>
+</p>
+</div>
+
+<div id="mo-examples-6" class="slide">
+<h1>Recording decomposition</h1>
+<p class="">
+<pre><code>
+:rec a mo:Recording;
+  rdfs:label "live recording of my band in studio";
+  event:sub_event :guitar1, :guitar2, :drums1, :kick1; :sing.
+
+:sing a mo:Recording;
+  rdfs:label "Voice recorded with a SM57";
+  event:factor rd:sm57;
+  event:place [rdfs:label "Middle of the room"].
+
+:kick1 a mo:Recording;
+  rdfs:label "Kick drum using a Shure PG52";
+  event:factor rd:pg52;
+  event:place [rdfs:label "Kick drum microphone location"].
+</code></pre>
+</p>
 </div>
 
 <!-- Copy/paste a couple of N3 examples here -->
