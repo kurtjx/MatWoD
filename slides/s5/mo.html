@@ -193,8 +193,20 @@
 <li>Events happening during a performance or a recording</li>
 <li>Symbolic information</li>
 <li>Alignements between multiple timelines</li>
+<li><a href="http://wiki.musicontology.com/index.php/Examples">More examples</a></li>
 </ul>
-<p><a href="http://wiki.musicontology.com/index.php/Examples">More examples</a></p>
+</div>
+
+<div id="mo-extensions" class="slide">
+<h1>Music Ontology extensions</h1>
+<p>Multiple extensions, to deal with:</p>
+<ul>
+<li><a href="http://purl.org/ontology/similarity/">Music similarity</a></li>
+<li><a href="http://purl.org/ontology/chord/">Chords</a> and <a href="http://purl.org/ontology/tonality/">keys</a></li>
+<li><a href="http://motools.sourceforge.net/af/">Audio features</a></li>
+<li><a href="http://purl.org/ontology/mo/mit/">Instrument taxonomy</a></li>
+<li><a href="http://purl.org/ontology/symbolic-music/">Symbolic information</a></li>
+</ul>
 </div>
 
 <div id="mo-examples-4" class="slide">
@@ -235,12 +247,12 @@
 </div>
 
 <div id="mo-examples-6" class="slide">
-<h1>Recording decomposition</h1>
+<h1>Decomposing a recording session</h1>
 <p class="">
 <pre><code>
 :rec a mo:Recording;
   rdfs:label "live recording of my band in studio";
-  event:sub_event :guitar1, :guitar2, :drums1, :kick1; :sing.
+  event:sub_event :guitar1, :guitar2, :drums1, :kick1, :sing.
 
 :sing a mo:Recording;
   rdfs:label "Voice recorded with a SM57";
@@ -255,18 +267,47 @@
 </p>
 </div>
 
-<!-- Copy/paste a couple of N3 examples here -->
+<div id="mo-examples-7" class="slide">
+<h1>Symbolic information (1)</h1>
+<p class="">
+<pre><code>
+:compo
+    a mo:Composition;
+    event:product :syrinx_w ;
+    event:product :syrinx_s .
+:syrinx 
+    a mo:MusicalWork;
+    owl:sameAs &lt;http://dbpedia.org/resource/Syrinx_%28Debussy%29&gt; .
+:syrinx_s 
+    a mo:Score ;
+    so:score_time :tl .
 
-<div id="mo-extensions" class="slide">
-<h1>Music Ontology extensions</h1>
-<p>Multiple extensions, to deal with:</p>
-<ul>
-<li><a href="http://purl.org/ontology/similarity/">Music similarity</a></li>
-<li><a href="http://purl.org/ontology/chord/">Chords</a> and <a href="http://purl.org/ontology/tonality/">keys</a></li>
-<li><a href="http://motools.sourceforge.net/af/">Audio features</a></li>
-<li><a href="http://purl.org/ontology/mo/mit/">Instrument taxonomy</a></li>
-<li><a href="http://purl.org/ontology/symbolic-music/">Symbolic information</a></li>
-</ul>
+:tl a so:ScoreTimeLine.
+</code></pre>
+</p>
+</div>
+
+<div id="mo-examples-8" class="slide">
+<h1>Symbolic information (2)</h1>
+<p class="">
+<pre><code>
+:e000
+    a so:DottedEighthNote ;
+    so:pitch :b_flat ;
+    event:time [
+        tl:onTimeLine :tl ;
+        tl:meets :e001 ;
+    ] .
+:e001
+    a so:ThirtysecondNote ;
+    so:pitch :a ;
+    event:time [
+        tl:onTimeLine :tl ;
+        tl:meets :e002 ;
+    ] .
+</code></pre>
+</p>
+<p><a href="http://motools.svn.sourceforge.net/viewvc/motools/so/examples/syrinx.n3?revision=372">Full example</a></p>
 </div>
 
 <div id="mo-available-data" class="slide">
