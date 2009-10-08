@@ -136,6 +136,55 @@
 <img src="resources/mo-workflow.jpg"/>
 </div>
 
+<div id="mo-examples-1" class="slide">
+<h1>Trout Quintet</h1>
+<p class="">
+<pre><code>
+:work
+    a mo:MusicalWork ;
+    dc:title "Franz Schubert's Trout Quintet" .
+</code></pre>
+</p>
+</div>
+
+<div id="mo-examples-2" class="slide">
+<h1>Trout Quintet (2)</h1>
+<p class="">
+<pre><code>
+:work
+  a mo:MusicalWork ;
+  dc:title "Franz Schubert's Trout Quintet" .
+
+:performance
+  a mo:Performance ;
+  dc:title "Trout Quintet, performed by the London Symphony Orchestra" ;
+  mo:performance_of :work ;
+  mo:performer &lt;http://dbpedia.org/resource/London_Symphony_Orchestra&gt; ;
+  mo:recorded_as [
+    a mo:Signal ;
+    mo:published_as :track1 ;
+    dc:title "Recording of the LSO performing the Trout Quintet" ;
+  ] .
+</code></pre>
+</p>
+</div>
+
+<div id="mo-examples-3" class="slide">
+<h1>Trout Quintet (3)</h1>
+<p class="">
+<pre><code>
+:track1
+  a mo:Track ;
+  mo:track_number 5 ;
+  owl:sameAs &lt;http://dbtune.org/musicbrainz/resource/
+                   track/3208fbce-c20f-4362-a3d5-5405ac1904bd&gt; ;
+  dc:title "Trout Quintet, performed by the LSO, on 'Favorite Classics'"
+  .
+</code></pre>
+</p>
+</div>
+
+
 <div id="mo-level3" class="slide">
 <h1>More Music Ontology</h1>
 <p>In the same way, we can describe more complex things:</p>
