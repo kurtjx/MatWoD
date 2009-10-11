@@ -1,0 +1,9 @@
+PREFIX mo: <http://purl.org/ontology/mo/>
+PREFIX event: <http://purl.org/NET/c4dm/event.owl#>
+SELECT ?place
+FROM <glenn_gould_performance.n3>
+WHERE {
+?performance 
+  mo:performer <http://dbpedia.org/resource/Glenn_Gould> ;
+  event:place ?place
+}
