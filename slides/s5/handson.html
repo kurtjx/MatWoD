@@ -144,6 +144,36 @@
 <p>It should give 5 RDF triples</p>
 </div>
 
+<div id="handson-1-8" class="slide">
+<h1>Querying from the command-line (1)</h1>
+<p>Give me places in which Glenn Gould played:</p>
+<pre><code>
+PREFIX mo: &lt;http://purl.org/ontology/mo/&gt;
+PREFIX event: &lt;http://purl.org/NET/c4dm/event.owl#&gt;
+SELECT ?place
+FROM &lt;glenn_gould_performance.n3&gt;
+WHERE {
+?performance
+  mo:performer &lt;http://dbpedia.org/resource/Glenn_Gould&gt; ;
+  event:place ?place
+}
+</code></pre>
+<p>Save as places_in_which_glenn_gould_played.rq</p>
+</div>
+
+<div id="handson-1-9" class="slide">
+<h1>Querying from the command-line (2)</h1>
+<p>Use roqet from the rasqal-utils package:</p>
+<code><pre>
+$ roqet places_in_which_glenn_gould_played.rq 
+
+roqet: Querying from file places_in_which_glenn_gould_played.rq
+roqet: Query has a variable bindings result
+result: [place=uri&lt;http://dbpedia.org/resource/Ebell_of_Los_Angeles&gt;]
+roqet: Query returned 1 results
+</code></pre>
+</div>
+
 <!-- end presentation -->
 </div>
 
