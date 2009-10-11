@@ -1,0 +1,13 @@
+@prefix mo: <http://purl.org/ontology/mo/> .
+@prefix : <#> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix event: <http://purl.org/NET/c4dm/event.owl#> .
+
+:performance
+  a mo:Performance ;
+  mo:performer <http://dbpedia.org/resource/Glenn_Gould> ;
+  dc:date "1964-04-10"^^xsd:date ;
+  event:place <http://dbpedia.org/resource/Ebell_of_Los_Angeles> ;
+  mo:performance_of <http://dbpedia.org/resource/Piano_Sonata_No._30_(Beethoven)> .
+
