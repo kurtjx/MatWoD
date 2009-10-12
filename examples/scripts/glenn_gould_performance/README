@@ -1,0 +1,7 @@
+This example uses the local RDF about Glenn Gould, loads it using rdflib and then queries the loaded data.
+
+You can run this example by typing:
+
+  $ python load_n_query.py
+
+Please examine load_n_query.py to see how easy this is!

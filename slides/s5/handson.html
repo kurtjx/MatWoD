@@ -87,6 +87,7 @@
 
 <div id="handson-1-4" class="slide">
 <h1>Happened on April 10, 1964</h1>
+<p></p>
 <pre><code>
 @prefix mo: &lt;http://purl.org/ontology/mo/&gt; .
 @prefix : &lt;#&gt; .
@@ -102,6 +103,7 @@
 
 <div id="handson-1-5" class="slide">
 <h1>At the Wilshire Ebell Theater</h1>
+<p></p>
 <pre><code>
 @prefix mo: &lt;http://purl.org/ontology/mo/&gt; .
 @prefix : &lt;#&gt; .
@@ -114,11 +116,13 @@
   mo:performer &lt;http://dbpedia.org/resource/Glenn_Gould&gt; ;
   dc:date "1964-04-10"^^xsd:date ;
   event:place &lt;http://dbpedia.org/resource/Ebell_of_Los_Angeles&gt; .
+
 </code></pre>
 </div>
 
 <div id="handson-1-6" class="slide">
 <h1>Performed Beethoven's Piano Sonata No. 30</h1>
+<p></p>
 <pre><code>
 @prefix mo: &lt;http://purl.org/ontology/mo/&gt; .
 @prefix : &lt;#&gt; .
@@ -174,6 +178,84 @@ roqet: Query returned 1 results
 </code></pre>
 </div>
 
+<div id="python00" class="slide">
+<h1>Let's do it in python</h1>
+<p>We can use <a href="http://www.rdflib.org/">rdflib</a> to parse local <i>and</i> remote RDF
+	- get this data <i>linked</i></p>
+<p>install rdflib using Python EZ setuptools 
+	<a href="http://pypi.python.org/pypi/setuptools">http://pypi.python.org/pypi/setuptools</a></p>
+<pre><code>
+	$ sudo easy_install rdflib -U "rdflib>=2.4"
+	
+</code></pre>
+</div>
+
+<div id="python01" class="slide">
+	<h1>Interactive terminal action</h1>
+	<p>open a terminal window and go to the directory with <code>glenn_gould_performance.n3</code></p>
+	<p>if you have <a href="http://ipython.scipy.org/">ipython</a>, launch it now otherwise just launch python</p>
+	<pre><code>
+		$ cd path/to/glenn_gould
+		$ ipython
+	</code></pre>
+</div>
+
+<div id="python02" class="slide">
+	<h1>rdflib is easy!</h1>
+	<p>Once inside python or ipython</p>
+<pre><code>
+	>>> import rdflib
+	>>> graph = rdflib.ConjunctiveGraph()
+	>>> graph.parse('glenn_gould_performance.n3', format='n3')
+	
+</code></pre>
+<p>We've loaded the RDF graph into memory!
+	 We have to specify to the parser our format is 'n3' as it assumes RDF/XML (which is a bit lame)</p>
+</div>
+
+<div id="python03" class="slide">
+	<h1>Write our query</h1>
+	<p style="text-decoration: blink">we could load our query from the text file, but let's just re-type it in the terminal</p>
+<pre><code>
+	>>> query = '''
+	...     PREFIX mo: &lt;http://purl.org/ontology/mo/&gt;
+	...     PREFIX event: &lt;http://purl.org/NET/c4dm/event.owl#&gt;
+	...     SELECT ?place
+	...     FROM &lt;glenn_gould_performance.n3&gt;
+	...     WHERE {
+	...     ?performance
+	...       mo:performer &lt;http://dbpedia.org/resource/Glenn_Gould&gt; ;
+	...       event:place ?place
+	...     }'''
+	
+</code></pre>
+</div>
+
+<div id="python04" class="slide">
+	<h1>Do the query</h1>
+	<p>With rdflib, you'll generally make your query and iterate over the results all at once</p>
+<pre><code>
+	>>> for row in graph.query(query):
+	...     print row[0]
+	... 
+</code></pre>
+	<p>each result row is a tuple where the length / order of the tuple corresponds exactly to the 
+		<code>SELECT</code> statement of the query</p>
+	<p>here we only have one element and one row</p>
+</div>
+
+<div id="python05" class="slide">
+	<h1>Let's get linked</h1>
+	<p>The same <code>.parse</code> function we used to parse our local file can parse URIs over the Web</p>
+<pre><code>
+	>>> graph.parse('http://dbpedia.org/resource/Glenn_Gould')
+	>>> graph.parse('http://dbpedia.org/resource/Ebell_of_Los_Angeles')
+	
+</code></pre>
+<p>rdflib handles the headers and requests an RDF representation of these resources and adds it to our 
+	<code>graph</code> in memory</p>
+<p>now we can make even more complex queries</p>
+</div>
 <!-- More advanced stuff here... Loading linked dbpedia info and querying it etc. -->
 
 <!-- end presentation -->

@@ -549,4 +549,4 @@ function startup() {
 }
 
 window.onload = startup;
-window.onresize = function(){setTimeout('fontScale()', 50);}
+//window.onresize = function(){setTimeout('fontScale()', 50);}
