@@ -1,0 +1,382 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" 
+	"http://www.w3.org/MarkUp/DTD/xhtml-rdfa-1.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" 
+      xmlns:doap="http://usefulinc.com/ns/doap#"
+      xmlns:dct="http://purl.org/dc/terms/"
+      xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+      xml:lang="en" lang="en" dir="ltr"
+      xmlns:dc="http://purl.org/dc/elements/1.1/"
+      xmlns:foaf="http://xmlns.com/foaf/0.1/"
+      xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+
+<head profile="http://ns.inria.fr/grddl/rdfa/">
+<title>Music and the Web of Data</title>
+<!-- metadata -->
+<meta name="generator" content="S5" />
+<meta name="version" content="S5 1.1" />
+<meta name="presdate" content="20091026" />
+<meta name="author" content="Matwod Team" />
+<meta name="company" content="Queen Mary University of London and BBC" />
+<!-- configuration parameters -->
+<meta name="defaultView" content="slideshow" />
+<meta name="controlVis" content="hidden" />
+<!-- style sheet links -->
+<link rel="stylesheet" href="ui/default/slides.css" type="text/css" media="projection" id="slideProj" />
+<link rel="stylesheet" href="ui/default/outline.css" type="text/css" media="screen" id="outlineStyle" />
+<link rel="stylesheet" href="ui/default/print.css" type="text/css" media="print" id="slidePrint" />
+<link rel="stylesheet" href="ui/default/opera.css" type="text/css" media="projection" id="operaFix" />
+<!-- S5 JS -->
+<script src="ui/default/slides.js" type="text/javascript"></script>
+</head>
+<body>
+
+<div class="layout">
+<div id="controls"><!-- DO NOT EDIT --></div>
+<div id="currentSlide"><!-- DO NOT EDIT --></div>
+<div id="header"></div>
+<div id="footer">
+<h1>ISMIR 2009 Kobe Japan</h1>
+<h2>Publishing to the Web of Linked Data</h2>
+</div>
+</div>
+
+
+<div class="presentation">
+
+<div id="title" class="slide">
+	<h1>Publishing Linked Data</h1>
+	<h2>a painfully brief primer</h2>
+</div>
+<div id="001" class="slide">
+	<h1>Get on the LOD bus</h1>
+	<img src="images/lod-bus2.jpg" alt="Jump on the LOD Bus" width="100%" title="Jump on the LOD Bus, see http://kantenwerk.org/ for more info about photo credit"/>
+</div>
+
+<div id="002" class="slide">
+	<h1>So I've got this data...</h1>
+	<p>Hopefully at this point you're thinking</p>
+	<ul class="incremental">
+		<li>yeah this Linked Data thing seems pretty cool</li>
+		<li>but they could use more data, and more links</li>
+		<li>I'm a researcher, I generate data</li>
+		<li>maybe I can publish my data as Linked Data!</li>
+	</ul>
+	<p class="small incremental">If you're not thinking this, either you weren't paying attention or we failed ;-)</p>
+</div>
+
+<div id="003" class="slide">
+	<h1 style="display:none">The LOD cloud</h1>
+	<img src="images/lod-datasets_2009-07-14.png" style="position:absolute; top:0px; left:0px" width="100%"/>
+</div>
+
+<div id="principle" class="slide">
+	<h1>Basic principles of Linked Data</h1>
+	<p>TimBL has delivered unto us the 
+		<a href="http://www.w3.org/DesignIssues/LinkedData.html">four commandments of Linked Data</a>
+	</p>
+	<ol>
+		<li>
+        <p>
+          Use <code>URI</code>s as names for things
+        </p>
+
+      </li>
+      <li>
+        <p>
+          Use <code>HTTP</code> <code>URI</code>s so that
+          people can look up those names.
+        </p>
+      </li>
+      <li>
+
+        <p>
+          When someone looks up a <code>URI</code> provide
+          useful information, using the standards (RDF, SPARQL)
+        </p>
+      </li>
+      <li>
+        <p>
+          Include links to other <code>URIs</code> so that they
+          can discover more things.
+        </p>
+
+      </li>
+      </ol>
+	<p class="incremental">this encourages the re-use of your data in wonderful and unexpected ways</p>
+</div>
+
+<div id="steps" class="slide">
+	<h1>6 Steps to publishing LD</h1>
+	<p>Tom Heath from <a href="http://www.talis.com/platform/">Talis</a> has outlined the following steps</p>
+	<ol class="indent">
+		<li>Understand the principles</li>
+		<li>Understand your data</li>
+		<li>Choose URIs for Things in your data</li>
+		<li>Setup your infrastructure</li>
+		<li>Link to other data sets</li>
+		<li>Describe and publicize your data</li>
+	</ol>
+</div>
+
+<div id="up" class="slide">
+	<h1>Understanding the principles</h1>
+	<p>Hopefully we've covered this more or less</p>
+	<p>It really is all about applying TimBL's 4 rules to encourage re-use of data</p>
+	<p>There are plenty of manifestos and guides to read
+		<a href="http://linkeddata.org/guides-and-tutorials">linkeddata.org</a> is a good place to start</p>
+	<p>for now let's just remember that...</p>
+	<ul class="incremental">
+		<li>use URIs as the names of things</li>
+		<li>use HTTP URIs so we can look them up</li>
+		<li>provide useful RDF when things are looked up</li>
+		<li>link to other URIs to facilitate discovery</li>
+	</ul>
+</div>
+
+<div id="steps26" class="slide">
+	<h1>6 Steps to publishing LD</h1>
+	<p>Cool, we understand the principles</p>
+	<ol class="indent">
+		<li><strike>Understand the principles</strike></li>
+		<li><b>Understand your data</b></li>
+		<li>Choose URIs for Things in your data</li>
+		<li>Setup your infrastructure</li>
+		<li>Link to other data sets</li>
+		<li>Describe and publicize your data</li>
+	</ol>
+</div>
+
+<div id="data" class="slide">
+	<h1>What's in your data?</h1>
+	<p>Next we have a good think about what are the <i>things</i> in our data we want to publish</p>
+	<ul>
+		<li>Music Artists</li>
+		<li>Tracks and albums</li>
+		<li>Audio features</li>
+		<li>Similarity statements</li>
+		<li>Signal processing algorithms and results</li>
+		<li>or something else</li>
+	</ul>
+</div>
+
+<div id="data2" class="slide">
+	<h1>Think about vocab</h1>
+	<p>Try to avoid re-inventing ontologies - have a look around and see what might work</p>
+	<ul>
+		<li><a href="http://musicontology.com/">Music Ontology</a></li>
+		<ul><li>Music Artists</li>
+			<li>Tracks and albums</li>
+			</ul>
+		<li><a href="http://purl.org/ontology/af/">Audio features ontology</a> for audio features</li>
+		<li><a href="http://purl.org/ontology/similarity/">MuSim</a> for similarity statements</li>
+		<li><a href="http://www.omras2.org/VampOntology">VAMP Ontology</a> 
+			for signal processing algorithms</li>
+		<li>Look at FOAF, DC, SIOC, SKOS, GEO, and others</li>
+		<li>Finally, create ad hoc terms with <a href="http://open.vocab.org/">open.vocab.org</a> 
+			or design your own ontology</li>
+	</ul>
+</div>
+
+<div id="steps36" class="slide">
+	<h1>6 Steps to publishing LD</h1>
+	<p>Cool, we understand our data</p>
+	<ol class="indent">
+		<li><strike>Understand the principles</strike></li>
+		<li><strike>Understand your data</strike></li>
+		<li><b>Choose URIs for Things in your data</b></li>
+		<li>Setup your infrastructure</li>
+		<li>Link to other data sets</li>
+		<li>Describe and publicize your data</li>
+	</ol>
+</div>
+
+<div id="chooseuris" class="slide">
+	<h1>Let's mint some URIs</h1>
+	<p>choosing URIs for your data is arguably the most important step</p>
+	<center><p class="big">Of course we'll use HTTP URIs</p></center>
+	<p style="position:absolute; left:75%" class="small">in case you weren't sure</p>
+	<p><br/><br/></p>
+	<p class="indent">and remember <a href="http://www.w3.org/Provider/Style/URI">cool URIs</a> don't change</p>
+</div>
+
+<div id="ownns" class="slide">
+	<h1>Mind the namespace</h1>
+	<p>Use a namespace that you control</p>
+	<ul>
+		<li>Bad - we don't control classicalarchives.com</li>
+		<ul>
+		<li>http://www.classicalarchives.com/composer/2329</li>
+		<li>http://www.classicalarchives.com/composer/2329/person</li>
+		</ul>
+		<li>Good - we do control the imaginary my.domain.com</li>
+		<ul>
+		<li>http://my.domain.com/composer/fchopin</li>	
+		</ul>
+</div>
+
+<div id="abs" class="slide">
+	<h1>Abstract away from implementation details</h1>
+	<p>try to keep the URIs free of clutter such as file extensions</p>
+	<ul>
+		<li>Good</li>
+		<ul>
+			<li>http://dbpedia.org/resource/Berlin</li>
+		</ul>
+		<li>Bad</li>
+		<ul><li>http://www4.wiwiss.fu-berlin.de:2020/demos/dbpedia/cgi- bin/resources.php?id=Berlin</li></ul>
+</div>
+
+<div id="hashslash" class="slide">
+<h1>Hash or Slash</h1>
+	<p>Decide whether you want hash or slash URIs</p>
+	<p>This is really a matter of preference but probably better to stick with one or the other</p>
+	<ul>
+		<li>http://mydomain.com/foaf.rdf#me</li>
+		<li>http://mydomain.com/id/me</li>
+	</ul>
+	<p>Note if you have a very small dataset, the hash URI gives you the option of publishing a flat file (which is really easy)</p>
+</div>
+
+<div id="thingrdfhtml" class="slide">
+	<h1>Common URI patterns</h1>
+	<center>
+	<table>
+		<tr>
+			<td>http://dbpedia.org/resource/New_York_City</td><td>&larr; Thing</td>
+		</tr><tr>
+			<td>http://dbpedia.org/data/New_York_City</td><td>&larr; RDF data</td></tr>
+		<tr>
+			<td>http://dbpedia.org/page/New_York_City</td><td>&larr; HTML page</td>
+		</tr>
+		<th bgcolor="#dededf" colspan="2" class="small"><center>--</center></th>
+		<tr>
+			<td>http://revyu.com/people/tom</td><td>&larr; Thing</td>
+		</tr><tr>
+			<td>http://revyu.com/people/tom/about/rdf</td><td>&larr; RDF data</td>
+		</tr><tr>
+			<td>http://revyu.com/people/tom/about/html</td><td>&larr; HTML page</td>
+		</tr>
+		<th bgcolor="#dededf" colspan="2" class="small"><center>--</center></th>
+			<tr>
+			<td>http://www.bbc.co.uk/music/artists/db4624cf</td><td>&larr; Thing</td>
+		</tr><tr>
+			<td>http://www.bbc.co.uk/music/artists/db4624cf.rdf</td><td>&larr; RDF data</td>
+		</tr><tr>
+			<td>http://www.bbc.co.uk/music/artists/db4624cf.html</td><td>&larr; HTML page</td>
+		</tr>
+	</table></center>
+	<p class="small">note these URIs have been cut short to fit on this slide</p>
+</div>
+
+<div id="steps46" class="slide">
+	<h1>6 Steps to publishing LD</h1>
+	<p>Cool, we've picked out some cool URIs</p>
+	<ol class="indent">
+		<li><strike>Understand the principles</strike></li>
+		<li><strike>Understand your data</strike></li>
+		<li><strike>Choose URIs for Things in your data</strike></li>
+		<li><b>Setup your infrastructure</b></li>
+		<li>Link to other data sets</li>
+		<li>Describe and publicize your data</li>
+	</ol>
+</div>
+
+<div id="hash" class="slide">
+	<h1>Way of the hash # (no conneg)</h1>
+	<p>If you have a rather small and static dataset (like an ontology)</p>
+	<p class="indent">and you've decided to use a hash URI system</p>
+	<center><p class="big">it's easy!</p></center>
+	<p><center>Throw that file on your web server and you're good to go</center></p>
+	<p>now only one HTTP request is needed to grab all your data</p> 
+	<p class="small">(good if it's small, bad if it's large)</p>
+</div>
+
+<div id="conneg" class="slide">
+	<h1>Way of the slash and the 303</h1>
+	<p>Linked Data content negotiation can be a bit tricky (ask the BBC guys)</p>
+	<p class="small" style="position:absolute; left:80%">but don't worry</p>
+	<p><br/></p>
+	<center><p class="big">There's plenty of tools already out there to help</p></center>
+	<p>we'll discuss a few of them at the end because they may apply to several steps...</p>
+</div>
+
+<div id="ourmeth" class="slide">
+	<h1>Just briefly</h1>
+	<p>We like to load our data into a triple store and then use Pubby to publish Linked Data</p>
+	<p>Or, if we have an existing relational database, use D2R Server to handle everything</p>
+</div>
+
+<div id="steps56" class="slide">
+	<h1>6 Steps to publishing LD</h1>
+	<p>Cool, we've got our infrastructure</p>
+	<ol class="indent">
+		<li><strike>Understand the principles</strike></li>
+		<li><strike>Understand your data</strike></li>
+		<li><strike>Choose URIs for Things in your data</strike></li>
+		<li><strike>Setup your infrastructure</strike></li>
+		<li><b>Link to other data sets</b></li>
+		<li>Describe and publicize your data</li>
+	</ol>
+</div>
+
+<div id="mbz" class="slide">
+	<h1>Linking to music resources</h1>
+	<p>When we're talking about music and Linked Data we're almost always talking about 
+		<a href="http://musicbrainz.org">Musicbrainz</a></p>
+	<p class="indent small">they provide URIs for artists, tracks, and albums</p>
+	<p>If your dataset deals with any of these things, you will want to create
+		<code>owl:sameAs</code> links to Musicbrainz URIs in your dataset</p>
+<pre><code>
+&lt;http://my.domain.com/artist/123&gt; 
+		owl:sameAs 
+			&lt;http://musicbrainz.org/artist/123&gt; .
+			
+</code></pre>
+</div>
+
+<div id="gnat" class="slide">
+	<h1>GNAT and gnatlib</h1>
+	<p>luckily there are some tools to help</p>
+	<ul class="incremental">
+		<li>GNAT - <b>G</b>NAT is <b>N</b>ot <b>A</b>nother <b>T</b>agger - links audiofiles to Musicbrains by ID3 tag or fingerprint</li>
+		<li>gnatlib - provides the same graph-matching lookup in a Python library</li>
+		<li><a href="http://sameas.org">sameAs.org</a> - a Web resource that can suggest sameAs resources</li>
+	</ul>
+</div>
+
+<div id="steps66" class="slide">
+	<h1>6 Steps to publishing LD</h1>
+	<p>Now we've just got to publicize our data</p>
+	<ol class="indent">
+		<li><strike>Understand the principles</strike></li>
+		<li><strike>Understand your data</strike></li>
+		<li><strike>Choose URIs for Things in your data</strike></li>
+		<li><strike>Setup your infrastructure</strike></li>
+		<li><strike>Link to other data sets</strike></li>
+		<li><b>Describe and publicize your data</b></li>
+	</ol>
+</div>
+
+<div id="publicize" class="slide">
+	<h1>Publicize</h1>
+	<p>Help others discover and index your data</p>
+	<ul>
+		<li>Ping Sindice and pingthesemanticweb.com</li>
+		<li>Provide a <a href="http://rdfs.org/ns/void-guide">voiD description</a> of your Data Set</li>
+	</ul>
+	<p>Apply a license or waiver to your data set</p>
+	<ul>
+		<li>Protects consumers of your data => encourages reuse</li>
+		<li>Creative Commons is probably <i>not</i> applicable</li>
+		<li>Use the Open Database License (ODbL) or release into the public domain by applying PDDL or CC0 waivers http://opendatacommons.org/</li>
+</div>
+
+<div id="vos" class="slide">
+	<h1>Openlink Virtuoso</h1>
+	
+</div>
+<!-- end of presentation -->	
+</div>
+</body>
+</html>
