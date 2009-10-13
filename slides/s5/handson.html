@@ -82,6 +82,7 @@
 :performance
   a mo:Performance ;
   mo:performer &lt;http://dbpedia.org/resource/Glenn_Gould&gt; .
+
 <code></pre>
 </div>
 
@@ -98,6 +99,7 @@
   a mo:Performance ;
   mo:performer &lt;http://dbpedia.org/resource/Glenn_Gould&gt; ;
   dc:date "1964-04-10"^^xsd:date .
+
 </code></pre>
 </div>
 
@@ -137,6 +139,7 @@
   event:place &lt;http://dbpedia.org/resource/Ebell_of_Los_Angeles&gt; ;
   mo:performance_of &lt;http://dbpedia.org/resource/
                             Piano_Sonata_No._30_(Beethoven)&gt; .
+
 </code></pre>
 </div>
 
@@ -144,7 +147,9 @@
 <h1>Checking that it parses...</h1>
 <p>Go to <a href="http://www.rdfabout.com/demo/validator/">http://www.rdfabout.com/demo/validator/</a> and check your RDF (make sure to select "Turtle" in the input format drop-down list)</p>
 <p>Or, if you have raptor-utils installed, just run the following from the command-line:</p>
-<center><p>$ rapper -i turtle glenn_gould_performance.n3</p></center>
+<pre><code>
+	$ rapper -i turtle glenn_gould_performance.n3
+	</code></pre>
 <p>It should give 5 RDF triples</p>
 </div>
 
@@ -175,6 +180,7 @@ roqet: Querying from file places_in_which_glenn_gould_played.rq
 roqet: Query has a variable bindings result
 result: [place=uri&lt;http://dbpedia.org/resource/Ebell_of_Los_Angeles&gt;]
 roqet: Query returned 1 results
+
 </code></pre>
 </div>
 
@@ -204,9 +210,9 @@ roqet: Query returned 1 results
 	<h1>rdflib is easy!</h1>
 	<p>Once inside python or ipython</p>
 <pre><code>
-	>>> import rdflib
-	>>> graph = rdflib.ConjunctiveGraph()
-	>>> graph.parse('glenn_gould_performance.n3', format='n3')
+>>> import rdflib
+>>> graph = rdflib.ConjunctiveGraph()
+>>> graph.parse('glenn_gould_performance.n3', format='n3')
 	
 </code></pre>
 <p>We've loaded the RDF graph into memory!
@@ -217,17 +223,17 @@ roqet: Query returned 1 results
 	<h1>Write our query</h1>
 	<p style="text-decoration: blink">we could load our query from the text file, but let's just re-type it in the terminal</p>
 <pre><code>
-	>>> query = '''
-	...     PREFIX mo: &lt;http://purl.org/ontology/mo/&gt;
-	...     PREFIX event: &lt;http://purl.org/NET/c4dm/event.owl#&gt;
-	...     SELECT ?place
-	...     FROM &lt;glenn_gould_performance.n3&gt;
-	...     WHERE {
-	...     ?performance
-	...       mo:performer &lt;http://dbpedia.org/resource/Glenn_Gould&gt; ;
-	...       event:place ?place
-	...     }'''
-	
+>>> query = '''
+...     PREFIX mo: &lt;http://purl.org/ontology/mo/&gt;
+...     PREFIX event: &lt;http://purl.org/NET/c4dm/event.owl#&gt;
+...     SELECT ?place
+...     FROM &lt;glenn_gould_performance.n3&gt;
+...     WHERE {
+...     ?performance
+...       mo:performer &lt;http://dbpedia.org/resource/Glenn_Gould&gt; ;
+...       event:place ?place
+...     }'''
+
 </code></pre>
 </div>
 
@@ -248,14 +254,64 @@ roqet: Query returned 1 results
 	<h1>Let's get linked</h1>
 	<p>The same <code>.parse</code> function we used to parse our local file can parse URIs over the Web</p>
 <pre><code>
-	>>> graph.parse('http://dbpedia.org/resource/Glenn_Gould')
-	>>> graph.parse('http://dbpedia.org/resource/Ebell_of_Los_Angeles')
+>>> graph.parse('http://dbpedia.org/resource/Glenn_Gould')
+>>> graph.parse('http://dbpedia.org/resource/Ebell_of_Los_Angeles')
 	
 </code></pre>
 <p>rdflib handles the headers and requests an RDF representation of these resources and adds it to our 
 	<code>graph</code> in memory</p>
 <p>now we can make even more complex queries</p>
 </div>
+
+<div id="python06" class="slide">
+	<h1>What does DBpedia actually know</h1>
+	<p>Load the Glenn Gould and Ebell URIs in your browser - you'll be redirected to a human-readble html page:</p>
+	<p class="small indent">
+		<a href="http://dbpedia.org/page/Glenn_Gould">http://dbpedia.org/page/Glenn_Gould</a></p>
+	<p class="small indent">
+		<a href="http://dbpedia.org/page/Ebell_of_Los_Angeles">http://dbpedia.org/page/Ebell_of_Los_Angeles</a></p>
+	<p>Now we can inspect by hand what sort of properties, classes, and literals are available.</p>
+	<p>This is a common first step when building a linked data app - finding out what data is available.</p>
+</div>
+
+<div id="python07" class="slide">
+	<h1>Another layer to our query</h1>
+	<p>Who is the architect of the Ebell?</p>
+	<pre><code>
+PREFIX mo: &lt;http://purl.org/ontology/mo/&gt;
+PREFIX event: &lt;http://purl.org/NET/c4dm/event.owl#&gt;
+PREFIX dbp: &lt;http://dbpedia.org/property/&gt;
+
+SELECT ?place ?architect
+WHERE { ?performance
+	       mo:performer &lt;http://dbpedia.org/resource/Glenn_Gould&gt; ;
+	          event:place ?place .
+	    ?place dbp:architect ?architect .  }
+		
+</code></pre>
+
+</div>
+
+<div id="python08" class="slide">
+	<h1>Even more links</h1>
+	<p>You may have noticed the <code>owl:sameAs</code> property related to Glenn Gould</p>
+	<p>We can add eve more info to our graph!</p>
+<pre><code>
+>>> query = '''
+... SELECT DISTINCT ?glenn WHERE
+... { &lt;http://dbpedia.org/resource/Glenn_Gould&gt; 
+...  		&lt;http://www.w3.org/2002/07/owl#sameAs&gt; ?glenn . } '''
+
+>>> sameAs = []
+>>> for row in graph.query(query):
+>>>     sameAs.append(row[0])
+
+>>> for resource in sameAs:
+>>>     graph.parse(resource)
+
+</code></pre>
+</div>
+		
 <!-- More advanced stuff here... Loading linked dbpedia info and querying it etc. -->
 
 <!-- end presentation -->

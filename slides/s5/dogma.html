@@ -1,0 +1,273 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" 
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Beyond Music Ontology</title>
+    <!-- metadata -->
+    <meta name="generator" content="S5" />
+    <meta name="version" content="S5 1.1" />
+    <meta name="presdate" content="20091026" />
+    <meta name="author" content="Michael Smethurst" />
+    <meta name="company" content="BBC" />
+    <!-- configuration parameters -->
+    <meta name="defaultView" content="slideshow" />
+    <meta name="controlVis" content="hidden" />
+    <!-- style sheet links -->
+    <link rel="stylesheet" href="ui/default/slides.css" type="text/css" media="projection" id="slideProj" />
+    <link rel="stylesheet" href="ui/default/outline.css" type="text/css" media="screen" id="outlineStyle" />
+    <link rel="stylesheet" href="ui/default/print.css" type="text/css" media="print" id="slidePrint" />
+    <link rel="stylesheet" href="ui/default/opera.css" type="text/css" media="projection" id="operaFix" />
+    <!-- embedded styles -->
+    <style type="text/css" media="all">
+      .imgcon {width: 525px; margin: 0 auto; padding: 0; text-align: center;}
+      #anim {width: 270px; height: 320px; position: relative; margin-top: 0.5em;}
+      #anim img {position: absolute; top: 42px; left: 24px;}
+      img#me01 {top: 0; left: 0;}
+      img#me02 {left: 23px;}
+      img#me04 {top: 44px;}
+      img#me05 {top: 43px;left: 36px;}
+    </style>
+    <!-- S5 JS -->
+    <script src="ui/default/slides.js" type="text/javascript"></script>
+  </head>
+  <body>
+    <div class="layout">
+      <div id="controls"><!-- DO NOT EDIT --></div>
+      <div id="currentSlide"><!-- DO NOT EDIT --></div>
+      <div id="header"></div>
+      <div id="footer">
+	    <h2>Beyond Music Ontology</h2>
+      </div>
+    </div>
+    <div class="presentation">
+      <div class="slide">
+	    <h1>Beyond Music Ontology</h1>
+      </div>
+	  <div class="slide title">
+		<h2>Music discovery on the web</h2>
+	  </div>
+	  <div class="slide">
+        <h2>Web based music discovery...</h2>
+        <ul class="incremental">
+		  <li>...tends to be about similarity...</li>
+		  <li>...and recommendation</li>
+	    </ul>
+	  </div>
+	  <div class="slide">
+        <h2>Similarity might be...</h2>
+        <ul class="incremental">
+          <li>via patterns of consumption / collaborative filtering</li>
+		  <li>[eg <a href="http://last.fm">last.fm</a>, <a href="http://www.amzon.com">Amazon</a>...]</li>
+		  <li>via musical similarity</li>
+		  <li>[eg <a href="http://www.pandora.com">Pandora</a>]</li>
+        </ul>
+      </div>
+	  <div class="slide">
+        <h2>The Music Ontology has extensions to deal with...</h2>
+        <ul class="incremental">
+          <li><a href="http://purl.org/ontology/similarity/">Music similarity</a></li>
+		  <li><a href="http://purl.org/ontology/chord/">Chords</a> and <a href="http://purl.org/ontology/tonality/">keys</a></li>
+		  <li><a href="http://motools.sourceforge.net/af/">Audio features</a></li>
+		  <li><a href="http://purl.org/ontology/mo/mit/">Instrument taxonomy</a></li>
+		  <li><a href="http://purl.org/ontology/symbolic-music/">Symbolic information</a></li>
+		</ul>
+      </div>
+	  <div class="slide">
+        <h2>...but linked data can also be used to model collaborative consumption...</h2>
+        <p><img src="dogma_images/collabfiltering1.png" height="437" width="120" alt="Yves, Kurt, George and Michael" /></p>
+      </div>
+	  <div class="slide">
+        <h2>...add in some URIs to identify tracks...</h2>
+        <p><img src="dogma_images/collabfiltering2.png" height="437" width="345" alt="Tracks" /></p>
+      </div>
+	  <div class="slide">
+        <h2>...and a URI to identify "listen events"...</h2>
+        <p><img src="dogma_images/collabfiltering3.png" height="437" width="345" alt="Tying people to tracks via listens" /></p>
+      </div>
+	  <div class="slide">
+        <h2>...and stitch into the rest of the graph</h2>
+        <p><img src="dogma_images/collabfiltering4.png" height="437" width="541" alt="Tying tracks to artists and onwards" /></p>
+      </div>
+	  <div class="slide title">
+		<h2>Similarity / recommendation as a graph</h2>
+	  </div>
+	  <div class="slide">
+        <h2>According to Last.fm recommendations New Order are similar to...</h2>
+        <p><img src="dogma_images/lastfm1.png" height="444" width="528" alt="Electronic, Monaco, The Other Two and Joy Division" /></p>
+      </div>
+	  <div class="slide">
+        <h2>...Electronic are similar to...</h2>
+        <p><img src="dogma_images/lastfm2.png" height="444" width="528" alt="Pet Shop Boys, Monaco, The Other Two and New Order" /></p>
+      </div>
+	  <div class="slide">
+        <h2>...Monaco are similar to...</h2>
+        <p><img src="dogma_images/lastfm3.png" height="444" width="528" alt="Pet Shop Boys, Electronic, New Order and The Other Two" /></p>
+      </div>
+	  <div class="slide">
+        <h2>...The Other Two are similar to...</h2>
+        <p><img src="dogma_images/lastfm4.png" height="448" width="528" alt="Electronic, New Order, Monaco and Andy Bell" /></p>
+      </div>
+	  <div class="slide">
+        <h2>...and Joy Division are similar to...</h2>
+        <p><img src="dogma_images/lastfm5.png" height="448" width="528" alt="New Order, Bahaus, Warsaw and The Smiths" /></p>
+      </div>
+	  <div class="slide big">
+        <h2>We can do the same thing for Pandora recommendations</h2>
+      </div>
+	  <div class="slide">
+        <h2>According to Pandora recommendations New Order are similar to...</h2>
+        <p><img src="dogma_images/pandora1.png" height="444" width="528" alt="The Cure, Depeche Mode, The Smiths and The Psychedelic Furs" /></p>
+      </div>
+	  <div class="slide">
+        <h2>...The Cure are similar to...</h2>
+        <p><img src="dogma_images/pandora2.png" height="444" width="528" alt="New Order, Depeche Mode, The Smiths and The Psychedelic Furs" /></p>
+      </div>
+	  <div class="slide">
+        <h2>...Depeche Mode are similar to...</h2>
+        <p><img src="dogma_images/pandora3.png" height="444" width="528" alt="The Cure, New Order, The Smiths and Duran Duran" /></p>
+      </div>
+	  <div class="slide">
+        <h2>...The Smiths are similar to...</h2>
+        <p><img src="dogma_images/pandora4.png" height="444" width="528" alt="New Order, The Cure, Depeche Mode and Morrissey" /></p>
+      </div>
+	  <div class="slide">
+        <h2>...and The Psychedelic Furs are similar to...</h2>
+        <p><img src="dogma_images/pandora5.png" height="448" width="528" alt="New Order, The Cure, The Smiths and Echo and the Bunnymen" /></p>
+      </div>
+	  <div class="slide">
+        <h2>The question is: how interesting is this?</h2>
+        <p><img src="dogma_images/lastfm+pandora.png" height="422" width="992" alt="last.fm and Pandora graphs shown together for comparison" /></p>
+      </div>
+	  <div class="slide title">
+        <h2>Premise: music denuded of cultural and historical context is <em>uninteresting</em>?!?</h2>
+      </div>
+	  <div class="slide big">
+        <h2>Let's play word association...</h2>
+      </div>
+	  <div class="slide">
+        <h2>Sex Pistols</h2>
+        <p><img src="dogma_images/sexpistolsposter.jpg" height="372" width="500" alt="Sex Pistols Poster" /></p>
+        <p class="small"><a href="http://www.flickr.com/photos/kr3st0/2798889757/">http://www.flickr.com/photos/kr3st0/2798889757/</a></p>
+      </div>
+	  <div class="slide">
+        <h2>Sex Pistols: some words I associated earlier</h2>
+        <p><img src="dogma_images/sexpistolstags.png" height="369" width="774" alt="Punk, Johnny Rotten, Sid Vicious, Sex, Kings Road, amphetamines, Bromley Contingent, S&smp;M, safety pins, Vivienne Westwood, Bill Grundy, Saint Martins, heroin, Jordan, Jamie Reid, Malcolm McLaren" /></p>
+      </div>
+	  <div class="slide">
+        <h2>Acid House</h2>
+        <p><img src="dogma_images/acidhouse.jpg" height="375" width="500" alt="Rave scene" /></p>
+        <p class="small"><a href="http://www.flickr.com/photos/jeroen020/94605331/">http://www.flickr.com/photos/jeroen020/94605331/</a></p>
+      </div>
+	  <div class="slide">
+        <h2>Acid House: some words I associated earlier</h2>
+        <p><img src="dogma_images/acidhousestags.png" height="327" width="626" alt="303, 909, Criminal Justice Act, Ibiza, Chicago, Shoom, Hacienda, Detroit, Smileys, Ecstasy, raves, M25" /></p>
+      </div>
+	  <div class="slide">
+        <h2>Public Enemy</h2>
+        <p><img src="dogma_images/publicenemy.jpg" height="281" width="500" alt="Public Enemy on stage" /></p>
+        <p class="small"><a href="http://www.flickr.com/photos/testspiel/3085386971/">http://www.flickr.com/photos/testspiel/3085386971/</a></p>
+      </div>
+	  <div class="slide">
+        <h2>Public Enemy: some words I associated earlier</h2>
+        <p><img src="dogma_images/publicenemytags.png" height="358" width="635" alt="Chuck D, Flavor Flav, Bomb Squad, SW1, Def Jam, Spike Lee, Beastie Boys, hip-hop, Louis Farrakhan, Black Power, Nation of Islam, Long Island, clock" /></p>
+      </div>
+	  <div class="slide">
+        <h2>If you tried to explain...</h2>
+        <ul class="incremental">
+          <li>...the Sex Pistols...</li>
+		  <li>...Acid House...</li>
+		  <li>...or Public Enemy...</li>
+		  <li>...by referring only to other music concepts...</li>
+		  <li>...you'd be missing the point</li>
+        </ul>
+      </div>
+	  <div class="slide big">
+        <h2>But remember... you can say <em>anything</em> about music on the web of data</h2>
+      </div>
+	  <div class="slide title">
+        <h2>Back to 4th June 1976, Manchester</h2>
+      </div>
+	  <div class="slide">
+        <h2>This is Paul Morley</h2>
+        <p><img src="dogma_images/paulmorley.jpg" height="" width="" alt="Paul Morley on stage" /></p>
+        <p class="small"><a href="http://www.flickr.com/photos/mullersflickr/786249416/">http://www.flickr.com/photos/mullersflickr/786249416/</a></p>
+      </div>
+
+-->
+	  <div class="slide">
+        <h2>He writes a music column for The Observer</h2>
+        <p><img src="dogma_images/northernsoul.png" height="675" width="476" alt="Sex Pistols Manchester article" /></p>
+      </div>
+	  <div class="slide">
+        <h2>Unfortunately because it's taken from print it has no links...</h2>
+        <p><img src="dogma_images/morleyarticle.png" height="668" width="489" alt="Sex Pistols Manchester article text" /></p>
+      </div>
+	  <div class="slide">
+        <h2>...but with links (and with RDFa)?</h2>
+        <p><img src="dogma_images/morleyarticlewithhighlights.png" height="668" width="489" alt="Sex Pistols Manchester article text with potential links highlighted" /></p>
+      </div>
+	  <div class="slide">
+        <h2>4th June 1976 (as a graph)</h2>
+        <p><img src="dogma_images/mcr.png" height="393" width="1312" alt="The Sex Pistols in Manchester, who was there, what they went on to do, it's portrayal in films etc" /></p>
+      </div>
+	  <div class="slide">
+        <h2>4th June 1976 - events</h2>
+        <p><img src="dogma_images/mcr_events.png" height="393" width="1312" alt="The Sex Pistols in Manchester - related events" /></p>
+      </div>
+	  <div class="slide">
+        <h2>4th June 1976 - artists</h2>
+        <p><img src="dogma_images/mcr_artists.png" height="393" width="1312" alt="The Sex Pistols in Manchester - artists" /></p>
+      </div>
+	  <div class="slide">
+        <h2>4th June 1976 - people</h2>
+        <p><img src="dogma_images/mcr_otherpeople.png" height="393" width="1312" alt="The Sex Pistols in Manchester - people" /></p>
+      </div>
+	  <div class="slide">
+        <h2>4th June 1976 - cultural</h2>
+        <p><img src="dogma_images/mcr_cultural.png" height="393" width="1312" alt="The Sex Pistols in Manchester - cultural" /></p>
+      </div>
+	  <div class="slide">
+        <h2>4th June 1976 - places</h2>
+        <p><img src="dogma_images/mcr_places.png" height="393" width="1312" alt="The Sex Pistols in Manchester - places" /></p>
+      </div>
+	  <div class="slide">
+        <h2>4th June 1976 - films</h2>
+        <p><img src="dogma_images/mcr_films.png" height="393" width="1312" alt="The Sex Pistols in Manchester - films" /></p>
+      </div>
+	  <div class="slide">
+        <h2>There's more to music than...</h2>
+        <ul class="incremental">
+          <li>...patterns of consumption</li>
+		  <li>...signals</li>
+        </ul>
+      </div>
+	  <div class="slide">
+        <h2>As Paul Morley says:</h2>
+		<blockquote>
+			<p>Johnny Rotten showed Howard Devoto a way to exploit positively his interest in <em>music</em>, <em>theatre</em>, <em>poetry</em> and <em>philosophy</em></p>
+		</blockquote>
+      </div>
+	  <div class="slide">
+        <h2>If everybody...</h2>
+        <ul class="incremental">
+          <li>MusicBrainz</li>
+		  <li>the BBC</li>
+		  <li>last.fm</li>
+		  <li>Pandora</li>
+		  <li>Songkick</li>
+		  <li>Spotify</li>
+		  <li>every researcher at this conference</li>
+		  <li>publishes Linked Data...</li>
+        </ul>
+      </div>
+	  <div class="slide big">
+        <h2>...together we can build a web-scale database that's greater than the sum of all those parts...</h2>
+      </div>
+	  <div class="slide big">
+        <h2>...and begins to describe music in all its rich historical and cultural glory :-)</h2>
+      </div>
+
+	</div>
+  </body>
+</html>
