@@ -1,0 +1,21 @@
+The following code snippets are available:
+
+In Ruby:
+
+    artists_based_in_detroit/
+
+        A simple Ruby script finding artists based in Detroit using SPARQL
+
+    artists_connections/
+
+        A simple Ruby script mimicking the /music related artist finder showed in the slides
+
+In Python:
+
+    glenn_gould_performance/
+
+        The example used in the hands-on part of the tutorial
+
+    recommend_by_location/
+
+        All is in the title :-)
