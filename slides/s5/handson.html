@@ -210,9 +210,9 @@ roqet: Query returned 1 results
 	<h1>rdflib is easy!</h1>
 	<p>Once inside python or ipython</p>
 <pre><code>
->>> import rdflib
->>> graph = rdflib.ConjunctiveGraph()
->>> graph.parse('glenn_gould_performance.n3', format='n3')
+&gt;&gt;&gt; import rdflib
+&gt;&gt;&gt; graph = rdflib.ConjunctiveGraph()
+&gt;&gt;&gt; graph.parse('glenn_gould_performance.n3', format='n3')
 	
 </code></pre>
 <p>We've loaded the RDF graph into memory!
@@ -223,7 +223,7 @@ roqet: Query returned 1 results
 	<h1>Write our query</h1>
 	<p style="text-decoration: blink">we could load our query from the text file, but let's just re-type it in the terminal</p>
 <pre><code>
->>> query = '''
+&gt;&gt;&gt; query = '''
 ...     PREFIX mo: &lt;http://purl.org/ontology/mo/&gt;
 ...     PREFIX event: &lt;http://purl.org/NET/c4dm/event.owl#&gt;
 ...     SELECT ?place
@@ -241,7 +241,7 @@ roqet: Query returned 1 results
 	<h1>Do the query</h1>
 	<p>With rdflib, you'll generally make your query and iterate over the results all at once</p>
 <pre><code>
-	>>> for row in graph.query(query):
+	&gt;&gt;&gt; for row in graph.query(query):
 	...     print row[0]
 	... 
 </code></pre>
@@ -254,8 +254,8 @@ roqet: Query returned 1 results
 	<h1>Let's get linked</h1>
 	<p>The same <code>.parse</code> function we used to parse our local file can parse URIs over the Web</p>
 <pre><code>
->>> graph.parse('http://dbpedia.org/resource/Glenn_Gould')
->>> graph.parse('http://dbpedia.org/resource/Ebell_of_Los_Angeles')
+&gt;&gt;&gt; graph.parse('http://dbpedia.org/resource/Glenn_Gould')
+&gt;&gt;&gt; graph.parse('http://dbpedia.org/resource/Ebell_of_Los_Angeles')
 	
 </code></pre>
 <p>rdflib handles the headers and requests an RDF representation of these resources and adds it to our 
@@ -295,19 +295,19 @@ WHERE { ?performance
 <div id="python08" class="slide">
 	<h1>Even more links</h1>
 	<p>You may have noticed the <code>owl:sameAs</code> property related to Glenn Gould</p>
-	<p>We can add eve more info to our graph!</p>
+	<p>We can add even more info to our graph!</p>
 <pre><code>
->>> query = '''
+&gt;&gt;&gt; query = '''
 ... SELECT DISTINCT ?glenn WHERE
 ... { &lt;http://dbpedia.org/resource/Glenn_Gould&gt; 
 ...  		&lt;http://www.w3.org/2002/07/owl#sameAs&gt; ?glenn . } '''
 
->>> sameAs = []
->>> for row in graph.query(query):
->>>     sameAs.append(row[0])
+&gt;&gt;&gt; sameAs = []
+&gt;&gt;&gt; for row in graph.query(query):
+&gt;&gt;&gt;     sameAs.append(row[0])
 
->>> for resource in sameAs:
->>>     graph.parse(resource)
+&gt;&gt;&gt; for resource in sameAs:
+&gt;&gt;&gt;     graph.parse(resource)
 
 </code></pre>
 </div>
