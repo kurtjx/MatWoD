@@ -14,9 +14,7 @@ Python: http://www.python.org/
 Outputs: 
 1) Output = sum(magnitudeSpectrum)
 
-Centre for Digital Music, Queen Mary University of London.
-Copyright (C) 2009 Gyorgy Fazekas, QMUL. (See Vamp sources 
-for licence information.)
+Created by Gyorgy Fazekas, QMUL.
 '''
 
 from numpy import *
