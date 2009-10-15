@@ -12,6 +12,36 @@ html, body {margin: 0; padding: 0;}
 .small {font-size: 60%; }
 .indent {margin-left: 8%;}
 
+.photo-credit { font-size: 0.5em; text-align:right; position:relative; top:85%;}
+
+.introductions h3 {
+	font-size: 1.2em !important;
+	margin: 1em 0 0;
+}
+.introductions p {
+	font-size: .5em;
+	margin: 0 0 1em;
+}
+.introductions h4 {
+	font-size: .5em;
+	margin: 2em;
+	text-align: center;
+}
+.title h2 {
+	font-size: 2em;
+	margin: 2em;
+	text-align: center;
+}
+.big h2 {
+	font-size: 2em;
+	margin: 1.2em 0;
+}
+.slide blockquote {
+	margin: 1.2em;
+}
+
+
+
 blockquote, q {font-style: italic;}
 blockquote {padding: 0 2em 0.5em; margin: 0 1.5em 0.5em; text-align: center; font-size: 1em;}
 blockquote p {margin: 0;}
