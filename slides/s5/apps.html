@@ -104,6 +104,62 @@
 <img src="images/music-ld-recs.png" alt="Artist connections on BBC Music"/>
 </div>
 
+<div id="handson-rec" class="slide">
+<h1>Let's do it yourself...</h1>
+<p>A stripped down version of what's generating those related artists is available in
+<a href="http://github.com/kurtjx/MatWoD/blob/master/examples/scripts/artist_connections/artist_connections.rb">examples/scripts/artist_connections</a></p>
+<p>We define SPARQL queries for "relatedness rules", e.g. "Two artists born in Detroit in the 60s are related" and a template
+for generating the explanation<p>
+<p>For a couple of seed artists, we go through these queries and get a recommendation at random</p>
+</div>
+
+<div id="handson-rec-2" class="slide">
+<h1>Generating related artists</h1>
+<pre><code>
+$ ruby artist_connections.rb 
+-------------------------------------------
+A random recommendation for Aretha Franklin
+{"explanation"=&gt;"Aretha Franklin and Cullen Miller are both based in Detroit",
+ "recommendation"=&gt;"http://dbpedia.org/resource/Cullen_Miller"}
+-------------------------------------------
+A random recommendation for Joy Division
+{"explanation"=&gt;
+  "Joy Division and Dave Rowbotham were both signed on Factory Records.",
+ "recommendation"=&gt;
+  "http://dbpedia.org/resource/Dave_Rowbotham"}
+-------------------------------------------
+A random recommendation for Minor Threat
+{"explanation"=&gt;
+  "Minor Threat and Autoclave were both signed on Dischord Records.",
+ "recommendation"=&gt;"http://dbpedia.org/resource/Autoclave_%28band%29"}
+</code></pre>
+</div>
+
+<div id="handson-rec-3" class="slide">
+<h1>Artists based in Berlin...</h1>
+<pre><code>
+$ irb
+&gt; require 'rubygems'; require 'rqommend'
+&gt; DEFAULT_ENDPOINT = 'http://dbpedia.org/sparql'; DEFAULT_OPTIONS = nil
+&gt; Rqommend::Can.new "
+    PREFIX dbo: &lt;http://dbpedia.org/ontology/&gt;
+    PREFIX dbp: &lt;http://dbpedia.org/property/&gt;
+    SELECT *
+    WHERE {
+      @INPUT dbp:name ?input_name ;
+        dbo:homeTown &lt;http://dbpedia.org/resource/Berlin&gt; .
+      ?OUTPUT dbp:name ?output_name ; 
+        dbo:homeTown &lt;http://dbpedia.org/resource/Berlin&gt; ;
+        a dbo:MusicalArtist .
+      FILTER (@INPUT != ?OUTPUT )
+    }",
+    '&lt;%= result["input_name"] %&gt; and &lt;%= result["output_name"] %&gt; are both based in Berlin'
+&gt; resource = Rqommend::Resource.new 'http://dbpedia.org/resource/Atari_Teenage_Riot'
+&gt; resource.recommendations
+</code></pre>
+</div>
+
+
 <div id="collection-management" class="slide">
 <h1>Personal Collection Management</h1>
 <p>Items in your collection can be linked to the corresponding Musicbrainz URIs</p>
