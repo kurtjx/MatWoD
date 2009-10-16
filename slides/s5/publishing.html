@@ -46,7 +46,7 @@
 
 
 <div id="001" class="slide">
-	<h1>Get on the LOD bus</h1>
+	
 	<img src="images/lod-bus2.jpg" alt="Jump on the LOD Bus" 
 	width="100%" 
 	title="Jump on the LOD Bus, see http://kantenwerk.org/ for more info about photo credit"
@@ -54,7 +54,7 @@
 </div>
 
 <div id="002" class="slide">
-	<h1>So I've got this data...</h1>
+	<h1>Get on the LOD bus</h1>
 	<p>Hopefully at this point you're thinking</p>
 	<ul class="incremental">
 		<li>yeah this Linked Data thing seems pretty cool</li>
@@ -123,8 +123,6 @@
 	<h1>Understanding the principles</h1>
 	<p>Hopefully we've covered this more or less</p>
 	<p>It really is all about applying TimBL's 4 rules to encourage re-use of data</p>
-	<p>There are plenty of manifestos and guides to read
-		<a href="http://linkeddata.org/guides-and-tutorials">linkeddata.org</a> is a good place to start</p>
 	<p>for now let's just remember that...</p>
 	<ul class="incremental">
 		<li>use URIs as the names of things</li>
@@ -132,6 +130,8 @@
 		<li>provide useful RDF when things are looked up</li>
 		<li>link to other URIs to facilitate discovery</li>
 	</ul>
+	<p class="incremental">There are plenty of manifestos and guides to read
+		<a href="http://linkeddata.org/guides-and-tutorials">linkeddata.org</a> is a good place to start</p>
 </div>
 
 <div id="steps26" class="slide">
@@ -147,16 +147,28 @@
 	</ol>
 </div>
 
+<div id="musopen" class="slide">
+	<h1>Our example</h1>
+	<img src="images/musopen.png" alt="musopen.org"
+	width="50%"
+	/>
+	<div style="position: absolute; top: 20%; left: 60%; width:30%; ">
+		<p><a href="http://musopen.org">Musopen</a> contains a bunch of public domain classical music</p>
+		<p>We did a quick and dirty LD publishing of this data for our ISMIR paper on the 
+			<a href="http://purl.org/ontology/similarity/">MuSim</a> similarity ontology</p>
+		<p class="small">come see the talk tomorrow morning :-)</p>
+	</div>
+</div>
+
 <div id="data" class="slide">
 	<h1>What's in your data?</h1>
 	<p>Next we have a good think about what are the <i>things</i> in our data we want to publish</p>
-	<ul>
-		<li>Music Artists</li>
-		<li>Tracks and albums</li>
+	<ul class="incremental">
+		<li>Music Artists - composers and performers</li>
+		<li>Musical works - tracks, audio files, and sheet music</li>
 		<li>Audio features</li>
 		<li>Similarity statements</li>
 		<li>Signal processing algorithms and results</li>
-		<li>or something else</li>
 	</ul>
 </div>
 
@@ -165,17 +177,59 @@
 	<p>Try to avoid re-inventing ontologies - have a look around and see what might work</p>
 	<ul>
 		<li><a href="http://musicontology.com/">Music Ontology</a></li>
-		<ul><li>Music Artists</li>
-			<li>Tracks and albums</li>
+		<ul><li>Music Artists - composers and performers</li>
+			<li>Musical works - tracks, audio files, and sheet music</li>
 			</ul>
 		<li><a href="http://purl.org/ontology/af/">Audio features ontology</a> for audio features</li>
 		<li><a href="http://purl.org/ontology/similarity/">MuSim</a> for similarity statements</li>
 		<li><a href="http://www.omras2.org/VampOntology">VAMP Ontology</a> 
 			for signal processing algorithms</li>
-		<li>Look at FOAF, DC, SIOC, SKOS, GEO, and others</li>
+		<li>Look at FOAF, DC, SIOC, SKOS, GEO, and others (check your handout)</li>
 		<li>Finally, create ad hoc terms with <a href="http://open.vocab.org/">open.vocab.org</a> 
 			or design your own ontology</li>
 	</ul>
+</div>
+
+<div id="abuse0" class="slide">
+	<h1>Hacking the ontology</h1>
+	<p>MO is great but maybe we want some shortcuts</p>
+	<img src="images/mo_hack0.png"
+	 height="60%"
+	 alt="MO modelling of a classical music work"
+	/>
+</div>
+
+<div id="abuse1" class="slide">
+	<h1>Hacking the ontology</h1>
+	<p>We use <a href="http://open.vocab.org/">open.vocab</a> to create some ad-hoc terms</p>
+	<img src="images/mo_hack1.png"
+	 height="60%"
+	 alt="MO modelling of a classical music work"
+	/>
+</div>
+
+<div id="abuse2" class="slide">
+	<h1>We can define these terms in OV</h1>
+	<img src="images/ovterm.png"
+	 alt="open.vocab.org screen shot"
+	 width="100%"/>
+	
+</div>
+
+<div id="abuse3" class="slide">
+	<h1>Note this is abuse of MO</h1>
+	
+	<img src="images/yves_shock.jpg"
+	alt="Yves is horrified"
+	 width="20%"
+	/>
+	<div style="position: absolute; top: 20%; left: 30%; width:60%; ">
+		<p>We're short-circuiting FRBR</p>
+		<p>This will shock and appall Yves</p>
+		<p>But anyone can say anything on the Web of Data</p>
+		<p>if you're gonna hack, hack it responsibly using <a href="http://open.vocab.org">open.vocab</a> - 
+			this way all our terms dereference and we still obey rule 3</p>
+	</div>
 </div>
 
 <div id="steps36" class="slide">
@@ -204,14 +258,14 @@
 	<h1>Mind the namespace</h1>
 	<p>Use a namespace that you control</p>
 	<ul>
-		<li>Bad - we don't control classicalarchives.com</li>
+		<li><b>Bad</b> - we don't control classicalarchives.com</li>
 		<ul>
-		<li>http://www.classicalarchives.com/composer/2329</li>
-		<li>http://www.classicalarchives.com/composer/2329/person</li>
+		<li><a href="">http://www.classicalarchives.com/composer/2329</a></li>
+		<li><a href="">http://www.classicalarchives.com/composer/2329/person</a></li>
 		</ul>
-		<li>Good - we do control the imaginary my.domain.com</li>
+		<li><b>Good</b> - we <em>do</em> control the <a href="http://catfishsmooth.net">catfishsmooth.net</a></li>
 		<ul>
-		<li>http://my.domain.com/composer/fchopin</li>	
+		<li><a href="">http://classical.catfishsmooth.net/resource/track/842</a></li>	
 		</ul>
 </div>
 
@@ -219,12 +273,15 @@
 	<h1>Abstract away from implementation details</h1>
 	<p>try to keep the URIs free of clutter such as file extensions</p>
 	<ul>
-		<li>Good</li>
+		<li><b>Bad</b></li>
+		<ul><li><a href="">
+			http://www.musopen.com/music.php?type=composer&id=136</a></li></ul>
+		<li><b>Good</b></li>
 		<ul>
-			<li>http://dbpedia.org/resource/Berlin</li>
+			<li><a href="">http://dbpedia.org/resource/Berlin</a></li>
 		</ul>
-		<li>Bad</li>
-		<ul><li>http://www4.wiwiss.fu-berlin.de:2020/demos/dbpedia/cgi- bin/resources.php?id=Berlin</li></ul>
+	</ul>
+
 </div>
 
 <div id="hashslash" class="slide">
@@ -232,8 +289,8 @@
 	<p>Decide whether you want hash or slash URIs</p>
 	<p>This is really a matter of preference but probably better to stick with one or the other</p>
 	<ul>
-		<li>http://mydomain.com/foaf.rdf#me</li>
-		<li>http://mydomain.com/id/me</li>
+		<li><a href="#">http://mydomain.com/foaf.rdf#me</a></li>
+		<li><a href="#">http://mydomain.com/id/me</a></li>
 	</ul>
 	<p>Note if you have a very small dataset, the hash URI gives you the option of publishing a flat file (which is really easy)</p>
 </div>
@@ -243,27 +300,27 @@
 	<center>
 	<table>
 		<tr>
-			<td>http://dbpedia.org/resource/New_York_City</td><td>&larr; Thing</td>
+			<td><a href="#">http://dbpedia.org/resource/New_York_City</a></td><td>&larr; Thing</td>
 		</tr><tr>
-			<td>http://dbpedia.org/data/New_York_City</td><td>&larr; RDF data</td></tr>
+			<td><a href="#">http://dbpedia.org/data/New_York_City</a></td><td>&larr; RDF data</td></tr>
 		<tr>
-			<td>http://dbpedia.org/page/New_York_City</td><td>&larr; HTML page</td>
+			<td><a href="#">http://dbpedia.org/page/New_York_City</a></td><td>&larr; HTML page</td>
 		</tr>
 		<th bgcolor="#dededf" colspan="2" class="small"><center>--</center></th>
 		<tr>
-			<td>http://revyu.com/people/tom</td><td>&larr; Thing</td>
+			<td><a href="#">http://revyu.com/people/tom</a></td><td>&larr; Thing</td>
 		</tr><tr>
-			<td>http://revyu.com/people/tom/about/rdf</td><td>&larr; RDF data</td>
+			<td><a href="#">http://revyu.com/people/tom/about/rdf</a></td><td>&larr; RDF data</td>
 		</tr><tr>
-			<td>http://revyu.com/people/tom/about/html</td><td>&larr; HTML page</td>
+			<td><a href="#">http://revyu.com/people/tom/about/html</a></td><td>&larr; HTML page</td>
 		</tr>
 		<th bgcolor="#dededf" colspan="2" class="small"><center>--</center></th>
 			<tr>
-			<td>http://www.bbc.co.uk/music/artists/db4624cf#artist</td><td>&larr; Thing</td>
+			<td><a href="#">http://www.bbc.co.uk/music/artists/db4624cf#artist</a></td><td>&larr; Thing</td>
 		</tr><tr>
-			<td>http://www.bbc.co.uk/music/artists/db4624cf.rdf</td><td>&larr; RDF data</td>
+			<td><a href="#">http://www.bbc.co.uk/music/artists/db4624cf.rdf</a></td><td>&larr; RDF data</td>
 		</tr><tr>
-			<td>http://www.bbc.co.uk/music/artists/db4624cf.html</td><td>&larr; HTML page</td>
+			<td><a href="#">http://www.bbc.co.uk/music/artists/db4624cf.html</a></td><td>&larr; HTML page</td>
 		</tr>
 	</table></center>
 	<p class="small">note these URIs have been cut short to fit on this slide</p>
@@ -282,14 +339,36 @@
 	</ol>
 </div>
 
+<div id="rdfa0" class="slide big">
+	<h2>a quick note on RDFa</h2>
+</div>
+
+<div id="rdfa1" class="slide">
+	<h1>RDFa is RDF embedded in HTML</h1>
+	<p>RDFa is an increasingly popular way to publish Linked Data</p>
+	<ul>
+		<li>Web developers can simply add a few tags to their existing HTML and have structured data</li>
+		<li>For example <a href="http://drupal.org">Drupal 7</a> outputs RDFa by default</li>
+		<li>In fact these slides contain some RDFa (try parsing index.html)</li>
+		<li>We're don't really have time to cover RDFa today - instead we're focusing on setting up a 
+			triple store and publishing <em>large</em> amounts of data</li>
+		<li>There are plenty of nice <a href="http://www.w3.org/TR/xhtml-rdfa-primer/">RDFa Primers</a> to
+			read if you want to learn more </li>
+</div>
+
+<div id="back2it" class="slide big">
+	<h2>Back to our infrastructure</h2>
+</div>
+
 <div id="hash" class="slide">
 	<h1>Way of the hash # (no conneg)</h1>
 	<p>If you have a rather small and static dataset (like an ontology)</p>
-	<p class="indent">and you've decided to use a hash URI system</p>
+	<p class="indent">and you've decided to use a hash URI system (or slash and 
+		<a href="http://www.w3.org/2001/sw/BestPractices/VM/http-examples/2005-11-18/#recipe2">mod_rewrite</a>)</p>
 	<center><p class="big">it's easy!</p></center>
 	<p><center>Throw that file on your web server and you're good to go</center></p>
 	<p>now only one HTTP request is needed to grab all your data</p> 
-	<p class="small">(good if it's small, bad if it's large)</p>
+	<center><p class="small">(good if it's small, bad if it's large)</p></center>
 </div>
 
 <div id="conneg" class="slide">
@@ -298,13 +377,91 @@
 	<p class="small" style="position:absolute; left:80%">but don't worry</p>
 	<p><br/></p>
 	<center><p class="big">There's plenty of tools already out there to help</p></center>
-	<p>we'll discuss a few of them at the end because they may apply to several steps...</p>
+	<p>we'll discuss a few of them shortly...</p>
 </div>
 
-<div id="ourmeth" class="slide">
-	<h1>Just briefly</h1>
-	<p>We like to load our data into a triple store and then use Pubby to publish Linked Data</p>
-	<p>Or, if we have an existing relational database, use D2R Server to handle everything</p>
+<div id="ourmeth" class="slide big">
+	<h2>First, setup our triple store first, then worry about the rest</h2>
+</div>
+<div id="stores" class="slide">
+	<h1>Triple store are RDF databases</h1>
+	<p>There are several really good open-source triple stores</p>
+	<ul>
+		<li> Openlink's 
+		<a href="http://virtuoso.openlinksw.com/dataspace/dav/wiki/Main/">Virtuoso</a> - 
+			used in DBpedia and <a href="http://dbtune.org/myspace/">dbtune.org/myspace</a>,
+			really full featured and mature</li>
+		<li>Garlik's 
+		<a href="http://4store.org">4Store</a> - very quick and scalable, simple to setup and use</li> 
+		<li><a href="http://www4.wiwiss.fu-berlin.de/bizer/d2r-server/">D2R Server</a> - 
+			allows one to map a relational DB to RDF, used in <a href="http://dbtune.org/musicbrainz">
+				dbtune.org/musicbrainz</a></li>
+		<li><a href="http://www.joseki.org/">Joseki</a> built on the Java-base Jena</li>
+		<li><a href="http://www.openrdf.org/about.jsp">Sesame</a> from openrdf</li>
+		<li> and there are several <a href="http://esw.w3.org/topic/LargeTripleStores">others</a></li>
+	</ul>
+	<!--<p>We like to load our data into a triple store and then use Pubby to publish Linked Data</p>
+	<p>Or, if we have an existing relational database, use D2R Server to handle everything</p>-->
+</div>
+
+<div id="4store0" class="slide">
+	<h1>We're using 4 Store</h1>
+	<p>In our example we're using <a href="http://4store.org">4Store</a></p>
+	<p>Our workflow is rather simple:</p>
+	<ol>
+		<li>Create an RDF serialization</li>
+		<li>Load the RDF file into the store</li>
+	</ol>
+</div>
+
+<div id="4store1" class="slide">
+	<h1>Some more details</h1>
+	<p class="incremental">We use various Python scripts to generate various bits of the RDF</p>
+	<p class="incremental">We use <a href="">Sonic Annotator</a> to generate audio features RDF</p>
+	<p class="incremental">4Store gives us several options loading the RDF including a command line utility</p>
+<pre><code>
+	$ 4s-import mytriplestore /path/to/myfile.rdf
+	
+</pre></code>
+</div>
+
+<div id="great" class="slide big">
+	<h2>Apache + 4Store and we're almost there!</h2>
+	<p class="small indent">but...</p>
+</div>
+
+<div id="404" class="slide">
+	<h1>Oh dear!</h1>
+	<p>when we look up <a href="">http://classical.catfishsmooth.net/resource/track/842</a> we get:</p>
+	<img src="images/404.png"
+	alt="404 not found"
+	/>
+	<p style="text-align:center">that is <em>not</em> cool</p>
+</div>
+
+<div id="pubby" class="slide">
+	<h1>We can do dereferencing</h1>
+	<p>We've picked out cool URIs and just dumped them in our 4Store</p>
+	<p class="incremental big indent">but they don't dereference</p>
+	<p class="incremental">don't worry, <a href="http://www4.wiwiss.fu-berlin.de/pubby/">Pubby</a>
+		is a good solution</p>
+	<p class="incremental indent">it's a Java-based server app that pulls RDF descriptions from a SPARQL
+		endpoint and handles
+		content negotiation in a nice Linked Data fashion</p>
+	<p class="incremental small">caveat: Pubby doesn't actually work with 4Store "out of the box" 
+		we had to do some hacking because 4Store can't handle describe queries (yet)</p>
+</div>
+
+<div id="deref" class="slide">
+	<h1>It's working</h1>
+	<img src="images/pubby.png" alt="dereferencing works"
+	/>
+	<p>get RDF with curl:</p>
+<pre><code>
+$ curl -I -H "Accept: application/rdf+xml" \
+	http://classical.catfishsmooth.net/resource/track/842
+
+</code></pre>
 </div>
 
 <div id="steps56" class="slide">
@@ -323,12 +480,12 @@
 <div id="mbz" class="slide">
 	<h1>Linking to music resources</h1>
 	<p>When we're talking about music and Linked Data we're almost always talking about 
-		<a href="http://musicbrainz.org">Musicbrainz</a></p>
+		<a href="http://musicbrainz.org">MusicBrainz</a></p>
 	<p class="indent small">they provide URIs for artists, tracks, and albums</p>
 	<p>If your dataset deals with any of these things, you will want to create
 		<code>owl:sameAs</code> links to Musicbrainz URIs in your dataset</p>
 <pre><code>
-&lt;http://my.domain.com/artist/123&gt; 
+&lt;http://classical.catfishsmooth.net/resource/artist/123&gt; 
 		owl:sameAs 
 			&lt;http://musicbrainz.org/artist/123&gt; .
 			
@@ -339,8 +496,11 @@
 	<h1>GNAT and gnatlib</h1>
 	<p>luckily there are some tools to help</p>
 	<ul class="incremental">
-		<li>GNAT - <b>G</b>NAT is <b>N</b>ot <b>A</b>nother <b>T</b>agger - links audiofiles to Musicbrains by ID3 tag or fingerprint</li>
-		<li>gnatlib - provides the same graph-matching lookup in a Python library</li>
+		<li>GNAT - <b>G</b>NAT is <b>N</b>ot <b>A</b>nother <b>T</b>agger - links audiofiles to MusicBrainz by ID3 tag or fingerprint</li>
+		<li><a href="http://ismir2009.dbtune.org/node/16">gnatlib</a>
+			 - provides the same graph-matching lookup in a Python library</li>
+		<li>It's also possible to take a MusicBrainz DB dump, build some Lucene indexes and use these locally
+			for matching - we've got some code, but it's really ugly and not released</li>
 		<li><a href="http://sameas.org">sameAs.org</a> - a Web resource that can suggest sameAs resources</li>
 	</ul>
 </div>
@@ -369,11 +529,15 @@
 	<ul>
 		<li>Protects consumers of your data => encourages reuse</li>
 		<li>Creative Commons is probably <i>not</i> applicable</li>
-		<li>Use the Open Database License (ODbL) or release into the public domain by applying PDDL or CC0 waivers http://opendatacommons.org/</li>
+		<li>Use the 
+			<a href="http://www.opendatacommons.org/licenses/odbl/">Open Database License (ODbL)</a>
+			 or release into the public domain by applying PDDL or 
+			<a href="http://creativecommons.org/license/zero">CC0</a> waivers 
+			- see <a href="http://opendatacommons.org/">http://opendatacommons.org/</a></li>
 </div>
 
-<div id="vos" class="slide">
-	<h1>Openlink Virtuoso</h1>
+<div id="end" class="slide big">
+	<h2>time to finally <a href="conclusion.html">wrap it up</a></h2>
 	
 </div>
 <!-- end of presentation -->	
