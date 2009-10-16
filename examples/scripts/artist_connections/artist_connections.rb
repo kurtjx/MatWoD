@@ -41,6 +41,7 @@ Rqommend::Can.new "
           <http://dbpedia.org/ontology/label> ?label ;
           <http://dbpedia.org/property/name> ?input_name .
         ?OUTPUT
+           a <http://dbpedia.org/ontology/MusicalArtist> ;
            <http://dbpedia.org/ontology/label> ?label ;
           <http://dbpedia.org/property/name> ?output_name .
         ?label
