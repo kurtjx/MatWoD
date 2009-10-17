@@ -1,0 +1,394 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" 
+	"http://www.w3.org/MarkUp/DTD/xhtml-rdfa-1.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" 
+      xmlns:doap="http://usefulinc.com/ns/doap#"
+      xmlns:dct="http://purl.org/dc/terms/"
+      xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+      xml:lang="en" lang="en" dir="ltr"
+      xmlns:dc="http://purl.org/dc/elements/1.1/"
+      xmlns:foaf="http://xmlns.com/foaf/0.1/"
+      xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+
+<head profile="http://ns.inria.fr/grddl/rdfa/">
+<title>Music and the Web of Data</title>
+<!-- metadata -->
+<meta name="generator" content="S5" />
+<meta name="version" content="S5 1.1" />
+<meta name="presdate" content="20091026" />
+<meta name="author" content="Matwod Team" />
+<meta name="company" content="Queen Mary University of London and BBC" />
+<!-- configuration parameters -->
+<meta name="defaultView" content="slideshow" />
+<meta name="controlVis" content="hidden" />
+<!-- style sheet links -->
+<link rel="stylesheet" href="ui/default/slides.css" type="text/css" media="projection" id="slideProj" />
+<link rel="stylesheet" href="ui/default/outline.css" type="text/css" media="screen" id="outlineStyle" />
+<link rel="stylesheet" href="ui/default/print.css" type="text/css" media="print" id="slidePrint" />
+<link rel="stylesheet" href="ui/default/opera.css" type="text/css" media="projection" id="operaFix" />
+<!-- S5 JS -->
+<script src="ui/default/slides.js" type="text/javascript"></script>
+</head>
+<body>
+
+<div class="layout">
+<div id="controls"><!-- DO NOT EDIT --></div>
+<div id="currentSlide"><!-- DO NOT EDIT --></div>
+<div id="header"></div>
+<div id="footer">
+<h1>ISMIR 2009 Kobe Japan</h1>
+<h2>You can say anything about Music on the Web of Linked Data</h2>
+</div>
+
+</div>
+
+
+<div class="presentation">
+
+<div class="slide">
+	<img src="images/bartsparql.gif" alt="Bart learns SPARQL" 
+	title="Bart learns SPARQL - http://www.snee.com/bobdc.blog/2008/10/learning-more-about-sparql.html"
+	width="100%"
+	style="position:absolute; left:0; top:0; z-index:100"/>
+</div>
+
+<div class="slide big">
+<h2>Let's talk Turtle</h2>
+</div>
+
+<div class="slide">
+	<h1>Serialization formats</h1>
+  	<p class="incremental">in addition to the XML serialization of RDF there are several other options</p>
+	<p class="small indent incremental">generally better options although RDF/XML is sometimes better supported</p>
+	<p class="incremental">all of these options are based on
+		<a href="http://www.w3.org/DesignIssues/Notation3">
+			Notation 3</a> or N3 which actually extends past the expressiveness of RDF</p>
+
+  <center><p class="big">N-Triples &sub; Turtle &sub; N3</p></center>
+</div>
+
+<div class="slide">
+	<h1>Serialization formats</h1>
+  	<p class="">in addition to the XML serialization of RDF there are several other options</p>
+	<p class="small indent">generally better options although RDF/XML is sometimes better supported</p>
+	<p class="">all of these options are based on
+		<a href="http://www.w3.org/DesignIssues/Notation3">
+			Notation 3</a> or N3 which actually extends past the expressiveness of RDF</p>
+  <center><p class="big">N-Triples &sub; <b>Turtle</b> &sub; N3</p></center>
+  <p class="incremental">
+	 what we've seen so far has all been Turtle (
+	<b>T</b>erse <b>R</b>DF <b>T</b>riple <b>L</b>anguag<b>e</b>) and we'll pretty much stick with that</p>
+</div>
+
+<!--<div id="venn" class="slide">
+	<h1 style="display:none">RDF serialization venn diagram</h1>
+	<center>
+	<img src="http://www.w3.org/DesignIssues/diagrams/n3/venn" alt="RDF serialization venn diagram" 
+	 height="80%"/>
+	</center>
+</div>-->
+
+<div id="evans" class="slide">
+	<h1>Back to Bill Evans</h1>
+	<center><img src="images/billevans.jpg" alt="Bill Evans" height="100%"/></center>
+</div>
+
+<div id="ttl0" class="slide">
+	<h1>Simple Turtle example</h1>
+	<p>Let's revisit Bill Evans</p>
+	<p class="indent">
+		<code>&lt;<a href="http://dbpedia.org/resource/Bill_Evans">http://dbpedia.org/resource/Bill_Evans</a>&gt;</code>
+	</p>
+	<p style="margin-left:16%">
+		<code>&lt;<a href="http://dbpedia.org/ontology/genre">http://dbpedia.org/ontology/genre</a>&gt;</code>
+		</p>
+	<p style="margin-left:22%">
+		<code>&lt;<a href="http://dbpedia.org/resource/Hard_bop">http://dbpedia.org/resource/Hard_bop</a>&gt; . </code>
+		</p>
+	<p class="incremental">this is valid Turtle (and N-Triples and N3)</p>
+	<p class="incremental">again, this triple states "Bill Evans has genre hard bop"</p>
+	<p class="incremental">simple! but these URIs are annoyingly long :-(</p>
+</div>
+
+<div id="ttl1" class="slide">
+	<h1>Let's add some prefixes</h1>
+	<p>We can use the <code>@prefix</code> key word to create some shortcuts</p>
+	<pre><code>
+@prefix dbpedia: &lt;http://dbpedia.org/resource/&gt; .
+@prefix dbpedia-owl: &lt;http://dbpedia.org/ontology/&gt; .
+		
+dbpedia:Bill_Evans dbpedia-owl:genre dbpedia:Hard_bop .
+	</code></pre>
+	<p>notice we remove the <code>&lt;</code> and <code>&gt;</code> characters surrounding the URIs</p>
+	<p>URIs in this form are <i>compact</i> URIs or <a href="http://www.w3.org/TR/2007/WD-curie-20070307/#sec_1.1.1.">
+		CURIEs</a></p>
+</div>		
+
+<div id="ttl2" class="slide">
+	<h1>More on prefixes</h1>
+	<p>Note the name of the prefix is arbitrary and we define it locally in our serialization</p>
+	<p>we could use any prefix we want</p>
+	<pre><code>
+@prefix foo: &lt;http://dbpedia.org/resource/&gt; .
+@prefix bar: &lt;http://dbpedia.org/ontology/&gt; .
+
+foo:Bill_Evans bar:genre foo:Hard_bop .
+	</code></pre>
+	<p>and the meaning is exactly the same</p>
+	<p class="incremental indent">however...</p>
+</div>
+
+<div id="ttl3" class="slide">
+	<h1>Even more on prefixes</h1>
+	<p>There are some vocabularies and namespaces that are commonly associated with a particular prefix by convention</p>
+	<pre><code>
+@prefix rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt; .
+@prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .
+@prefix owl: &lt;http://www.w3.org/2002/07/owl#&gt; .
+@prefix dc: &lt;http://purl.org/dc/terms/&gt; .
+@prefix foaf: &lt;http://xmlns.com/foaf/0.1/&gt; .
+@prefix mo: &lt;http://purl.org/ontology/mo/&gt; .
+
+</code></pre>
+	<p class="incremental">WARNING: such prefixes must still be specified locally
+	<center>try using <a href="http://prefix.cc">http://prefix.cc</a> to lookup prefixes</center></p>
+</div>
+
+<div id="ttl4" class="slide">
+	<h1>Back to Bill</h1>
+	<pre><code>
+@prefix dbpedia: &lt;http://dbpedia.org/resource/&gt; .
+@prefix dbpo: &lt;http://dbpedia.org/ontology/&gt; .
+@prefix mo: &lt;http://purl.org/ontology/mo/&gt; .
+@prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .
+@prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .
+
+dbpedia:Bill_Evans dbpo:genre dbpedia:Hard_bop .
+dbpedia:Bill_Evans dbpo:birthName "William John Evans"@en .
+dbpedia:Bill_Evans dbpo:birthdate "1929-08-16"^^xsd:date .
+dbpedia:Bill_Evans rdf:type mo:MusicArtist .
+dbpedia:Bill_Evans rdf:type foaf:Person .
+
+</code></pre>
+<p>Notice we provide his <code>birthName</code> and <code>birthdate</code> as a literals</p>
+</div>
+
+<div id="ttl5" class="slide">
+	<h1>Bill Evans final ttl</h1>
+		<pre><code>
+@prefix dbpedia: &lt;http://dbpedia.org/resource/&gt; .
+@prefix dbpo: &lt;http://dbpedia.org/ontology/&gt; .
+@prefix mo: &lt;http://purl.org/ontology/mo/&gt; .
+@prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .
+
+dbpedia:Bill_Evans dbpo:genre dbpedia:Hard_bop ;
+  dbpo:birthName "William John Evans"@en ;
+  dbpo:birthdate "1929-08-16"^^xsd:date ;
+  a mo:MusicArtist, foaf:Person .
+
+</code></pre>
+<ul>
+	<li><code>rdf:type</code> can be replaced by <code>a</code></li>
+<li>we use the <code>;</code> to chain multiple predicate-object pairs to one subject</li>
+<li>we use the <code>,</code> to chain multiple objects to one subject-predicate pair</li>
+</ul>
+</div>
+
+<div id="dbpedia-what" class="slide big">
+	<p>wait a minute,</p>
+	<h2><span class="indent">What is DBpedia?</span></h2>
+</div>
+
+<div id="dbpedia" class="slide">
+	<h1>DBpedia</h1>
+	<p>from <a href="http://dbpedia.org/About">dbpedia.org</a></p>
+	<blockquote>
+	<p>DBpedia is a community effort to extract structured information from Wikipedia and to make this information available on the Web. DBpedia allows you to ask sophisticated queries against Wikipedia, and to link other data sets on the Web to Wikipedia data.</p></blockquote>
+	<img src="images/dbpedia_logo.png" alt="DBpedia logo" style="position:absolute; left:76%"/>
+</p>
+
+<div id="sparql" class="slide big">
+	<h2>Time to shine with SPARQL</h2>
+</div>
+
+<div id="sparql0" class="slide">
+	<h1>Let's get to SPARQL</h1>
+	<p>SPARQL is really exciting query language for RDF</p>
+	<ul>
+		<li>pronounced "sparkle"</li>
+		<li><b>S</b>PARQL <b>P</b>rotocol <b>a</b>nd <b>R</b>DF <b>Q</b>uery <b>L</b>anguage</li>
+		<li>On 15 January 2008, SPARQL became an official <a href="http://www.w3.org/TR/rdf-sparql-query/">
+			W3C Recommendation</a></li>
+		<li>allows one to perform complex joins of disparate databases in a single, simple query</li>
+		<li>query for triple patterns using conjunction, disjunction, and optional patterns</li>
+			
+	</ul>
+</div>
+
+<div id="sparql01" class="slide">
+	<h1>SPARQL implementations</h1>
+	<p>There are SPARQL implementations for most popular programming languages</p> 
+		<ul>
+			<li>Redland's <a href="http://librdf.org/rasqal/">Rasqal</a> (C with bindings for Perl, Python, Ruby, PHP and others)
+			</li>
+			<li>Jena's <a href="http://jena.sourceforge.net/ARQ/">ARQ</a> (Java)</li>
+			<li><a href="http://rdflib.net/">RDFLib</a> (Python)</li>
+			<li>and many others</li>
+		</ul>
+</div>
+
+<div id="sparql02" class="slide">
+	<h1>SPARQL store implementations</h1>
+	<p>Even better there are several open-source scalable RDF stores that support SPARQL</p>
+	<ul>
+		<li> Openlink's 
+		<a href="http://virtuoso.openlinksw.com/dataspace/dav/wiki/Main/">Virtuoso</a></li>
+		<li>Garlik's 
+		<a href="http://4store.org">4Store</a></li> 
+		<li><a href="http://www4.wiwiss.fu-berlin.de/bizer/d2r-server/">D2R Server</a></li>
+		<li> and <a href="http://esw.w3.org/topic/LargeTripleStores">others</a></li>
+	</ul>
+</div>
+
+<div id="sparql1" class="slide">
+	<h1>A simple SPARQL query example</h1>
+	<p>SPARQL syntax is a relatively intuitive mashup of traditional SQL and Turtle</p>
+	<pre><code>		
+SELECT ?foo ?bar 
+  WHERE { &lt;http://dbpedia.org/resource/Bill_Evans&gt; ?foo ?bar . }
+
+</code></pre>
+	<p>this will return all triples in the store with Bill Evans as the subject</p>
+	<p>terms beginning with <code>?</code> are <a href="http://en.wikipedia.org/wiki/Universal_quantification">
+		universally quantified</a> variables</p>
+	<center>let's try it out at <a href="http://dbpedia.org/snorql/?query=SELECT+%3Ffoo+%3Fbar+%0D%0A++WHERE+{+%3Chttp%3A%2F%2Fdbpedia.org%2Fresource%2FBill_Evans%3E+%3Ffoo+%3Fbar+.+}">
+		http://dbpedia.org/snorql</a></center>
+</div>
+
+<div id="sparql2" class="slide">
+	<h1>SPARQL - basic syntax</h1>
+	<ul>
+		<li>Prefix declarations, for abbreviating URIs</li>
+    	<li>Dataset definition, stating what RDF graph(s) are being queried</li>
+		<li>A result clause, identifying what information to return from the query</li>
+		<li>The query pattern, specifying what to query for in the underlying dataset</li>
+		<li>Query modifiers, slicing, ordering, and otherwise rearranging query results</li>
+	</ul>
+</div>
+
+<div id="sparql3" class="slide">
+	<h1>SPARQL - basic syntax</h1>
+<pre><code>
+<span class="comment"># prefix declarations</span>
+PREFIX foo: &lt;http://example.com/resources/&gt;
+...
+<span class="comment"># dataset definition</span>
+FROM ...
+<span class="comment"># result clause</span>
+SELECT ...
+<span class="comment"># query pattern</span>
+
+WHERE {
+    ...
+}
+<span class="comment"># query modifiers</span>
+ORDER BY ...
+
+</code></pre>
+</div>
+
+<div id="sparql4" class="slide">
+	<h1>SPARQL query example</h1>
+	<p>as in Turtle we can use the keyword <code>PREFIX</code></p>
+	<pre><code>
+PREFIX dbpedia: &lt;http://dbpedia.org/resource/Bill_Evans&gt;
+SELECT ?p ?o 
+  WHERE { dbpedia:Bill_Evans ?p ?o . }
+
+</code></pre>
+	<p>notice we don't need the <code>@</code> and <code>.</code> around the <code>PREFIX</code> keyword</p>
+</div>
+
+<div id="sparql-challenge" class="slide">
+	<h1>Challenge</h1>
+	<p><center>Can you find all the Jazz artists from New Jersey who play piano?</center></p>
+	<img src="images/njsky.jpg" alt="Photo by http://www.flickr.com/photos/mcsimon/" width="100%"/>
+</div>
+
+<div id="sparql-answer" class="slide">
+	<h1>Challenge answer</h1>
+	<p>Note there is more than one way to get this
+		<a href="http://dbpedia.org/snorql/?query=PREFIX+dbpo%3A+%3Chttp%3A%2F%2Fdbpedia.org%2Fontology%2F%3E%0D%0APREFIX+dbpp%3A+%3Chttp%3A%2F%2Fdbpedia.org%2Fproperty%2F%3E%0D%0APREFIX+%3A+%3Chttp%3A%2F%2Fdbpedia.org%2Fresource%2F%3E%0D%0A%0D%0A%0D%0ASELECT+*%0D%0AWHERE+{+%0D%0A%3Fartist+a+dbpo%3AMusicalArtist+%3B%0D%0A++++dbpo%3Agenre+%3AJazz+%3B%0D%0A++++dbpp%3Ainstrument+%3APiano+%3B%0D%0A++++dbpo%3AhomeTown+%3ANew_Jersey.%0D%0A}">answer</a></p>
+<pre><code>
+	PREFIX dbpo: &lt;http://dbpedia.org/ontology/&gt;
+	PREFIX dbpp: &lt;http://dbpedia.org/property/&gt;
+	PREFIX : &lt;http://dbpedia.org/resource/&gt;
+
+
+	SELECT *
+	WHERE { 
+	?artist a dbpo:MusicalArtist ;
+	    dbpo:genre :Jazz ;
+	    dbpp:instrument :Piano ;
+	    dbpo:homeTown :New_Jersey.
+	}
+	
+</code></pre>
+</div>
+
+<div id="progmatic" class="slide">
+	<h1>A quick note on Python</h1>
+	<p>We can make SPARQL queries against endpoints in Python with SPARQLWrapper</p>
+<pre><code>
+	$ sudo easy_install SPARQLWrapper
+	
+</code></pre>
+	<p>a quick example of syntax</p>
+<pre><code>
+from SPARQLWrapper import SPARQLWrapper2
+sparql = SPARQLWrapper2('http://dbpedia.org/sparql')
+query = 'SELECT * WHERE { ?s ?p ?o } LIMIT 20'
+sparql.setQuery(query)
+response = sparql.query()
+for binding in response.bindings:
+	print binding['s'].value
+	print binding['p'].value
+	print binding['o'].value
+
+</code></pre>
+</div>
+
+<div id="seegit" class="slide">
+	<h1>Detailed examples</h1>
+	<p>There are detailed examples of how to use SPARQLWrapper in the github repository</p>
+	<p>Using SPARQLWrapper and RDFLib to build a Jamendo artist recommender:</p>
+	<p><a href="http://github.com/kurtjx/MatWoD/blob/master/examples/scripts/recommend_by_location/recommend_by_location.py">
+		http://github.com/kurtjx/MatWoD/blob/master/examples/scripts/recommend_by_location/</a>
+	</p>
+	<p>Also some examples using Ruby</p>
+	<p>"Find all music artists from Detroit":</p>
+	<p><a href="http://github.com/kurtjx/MatWoD/blob/master/examples/scripts/artists_based_in_detroit/artists_based_in_detroit.rb">
+		http://github.com/kurtjx/MatWoD/blob/master/examples/scripts/artists_based_in_detroit/</a></p>
+</div>
+
+<div id="take-away" class="slide big">
+	<p class="">with SPARQL</p>
+	<h2>all of Linked Data becomes one unified Web API<h2>
+</div>
+
+<div id="photo-credits" class="slide">
+	<h1>photo credits</h1>
+	<p class="">Bart SPARQL photo from Bob DuCharme's 
+		<a href="http://www.snee.com/bobdc.blog/2008/10/learning-more-about-sparql.html">blog</a></p>
+	<p>New Jersey skyline photo by 
+		<a href="http://www.flickr.com/photos/mcsimon/">http://www.flickr.com/photos/mcsimon/</a></p>
+</div>
+    
+<div id="transition" class="slide big">
+	<p>Now Yves will discuss </p>
+	<h2><a class="indent" href="mo.html">the Music Ontology</a></h2>
+</div>
+<!-- end presentation -->
+</div>
+</body>
+</html>
