@@ -53,7 +53,7 @@
 </div>
 
 <div class="slide big">
-<h2>Let's talk Turtle</h2>
+<h2>Turtle is an RDF serialization</h2>
 </div>
 
 <div class="slide">
@@ -103,7 +103,7 @@
 		<code>&lt;<a href="http://dbpedia.org/ontology/genre">http://dbpedia.org/ontology/genre</a>&gt;</code>
 		</p>
 	<p style="margin-left:22%">
-		<code>&lt;<a href="http://dbpedia.org/resource/Hard_bop">http://dbpedia.org/resource/Hard_bop</a>&gt; . </code>
+		<code>&lt;<a href="http://dbpedia.org/resource/Modal_jazz">http://dbpedia.org/resource/Modal_jazz</a>&gt; . </code>
 		</p>
 	<p class="incremental">this is valid Turtle (and N-Triples and N3)</p>
 	<p class="incremental">again, this triple states "Bill Evans has genre hard bop"</p>
@@ -117,7 +117,7 @@
 @prefix dbpedia: &lt;http://dbpedia.org/resource/&gt; .
 @prefix dbpedia-owl: &lt;http://dbpedia.org/ontology/&gt; .
 		
-dbpedia:Bill_Evans dbpedia-owl:genre dbpedia:Hard_bop .
+dbpedia:Bill_Evans dbpedia-owl:genre dbpedia:Modal_jazz .
 	</code></pre>
 	<p>notice we remove the <code>&lt;</code> and <code>&gt;</code> characters surrounding the URIs</p>
 	<p>URIs in this form are <i>compact</i> URIs or <a href="http://www.w3.org/TR/2007/WD-curie-20070307/#sec_1.1.1.">
@@ -132,7 +132,7 @@ dbpedia:Bill_Evans dbpedia-owl:genre dbpedia:Hard_bop .
 @prefix foo: &lt;http://dbpedia.org/resource/&gt; .
 @prefix bar: &lt;http://dbpedia.org/ontology/&gt; .
 
-foo:Bill_Evans bar:genre foo:Hard_bop .
+foo:Bill_Evans bar:genre foo:Modal_jazz .
 	</code></pre>
 	<p>and the meaning is exactly the same</p>
 	<p class="incremental indent">however...</p>
@@ -163,7 +163,7 @@ foo:Bill_Evans bar:genre foo:Hard_bop .
 @prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .
 @prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .
 
-dbpedia:Bill_Evans dbpo:genre dbpedia:Hard_bop .
+dbpedia:Bill_Evans dbpo:genre dbpedia:Modal_jazz .
 dbpedia:Bill_Evans dbpo:birthName "William John Evans"@en .
 dbpedia:Bill_Evans dbpo:birthdate "1929-08-16"^^xsd:date .
 dbpedia:Bill_Evans rdf:type mo:MusicArtist .
@@ -173,6 +173,18 @@ dbpedia:Bill_Evans rdf:type foaf:Person .
 <p>Notice we provide his <code>birthName</code> and <code>birthdate</code> as a literals</p>
 </div>
 
+<div id="lits" class="slide">
+	<h1>Some more literals</h1>
+	<p>Types of literals are taken from the XML Schema</p>
+<pre><code>
+	"this is a basic string"
+	"this is in English"@en
+	"und auf Deutsch"@de
+	"3.14"^^xsd:float
+	"2009-10-26T21:32:52"^^xsd:dateTime
+	
+</code></pre>
+
 <div id="ttl5" class="slide">
 	<h1>Bill Evans final ttl</h1>
 		<pre><code>
@@ -181,7 +193,7 @@ dbpedia:Bill_Evans rdf:type foaf:Person .
 @prefix mo: &lt;http://purl.org/ontology/mo/&gt; .
 @prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .
 
-dbpedia:Bill_Evans dbpo:genre dbpedia:Hard_bop ;
+dbpedia:Bill_Evans dbpo:genre dbpedia:Modal_jazz ;
   dbpo:birthName "William John Evans"@en ;
   dbpo:birthdate "1929-08-16"^^xsd:date ;
   a mo:MusicArtist, foaf:Person .
@@ -370,6 +382,8 @@ for binding in response.bindings:
 	<p><a href="http://github.com/kurtjx/MatWoD/blob/master/examples/scripts/artists_based_in_detroit/artists_based_in_detroit.rb">
 		http://github.com/kurtjx/MatWoD/blob/master/examples/scripts/artists_based_in_detroit/</a></p>
 </div>
+
+
 
 <div id="take-away" class="slide big">
 	<p class="">with SPARQL</p>
