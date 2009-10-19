@@ -101,8 +101,8 @@
 <ul class="incremental">
 <li>The <a href="http://purl.org/NET/c4dm/timeline.owl">Timeline ontology</a></li>
 <li>The <a href="http://purl.org/NET/c4dm/event.owl">Event ontology</a></li>
-<li><a href="http://xmlns.com/foaf/spec/">Friend of a Friend</a></li>
 <li><a href="http://www.frbr.org/">Functional Requirements for Bibliographic Records</a></li>
+<li><a href="http://xmlns.com/foaf/spec/">Friend of a Friend</a></li>
 </ul>
 </div>
 
@@ -297,7 +297,11 @@
 
 <div id="handson-1-8" class="slide">
 <h1>Querying from the command-line (1)</h1>
-<p>Give me places in which Glenn Gould played:</p>
+<p>Give me places in which Glenn Gould played</p>
+</div>
+
+<div id="handson-1-8-2" class="slide">
+<h1>Querying from the command-line (2)</h1>
 <pre><code>
 PREFIX mo: &lt;http://purl.org/ontology/mo/&gt;
 PREFIX event: &lt;http://purl.org/NET/c4dm/event.owl#&gt;
@@ -313,8 +317,8 @@ WHERE {
 </div>
 
 <div id="handson-1-9" class="slide">
-<h1>Querying from the command-line (2)</h1>
-<p>Use roqet from the rasqal-utils package:</p>
+<h1>Querying from the command-line (3)</h1>
+<p>Use <a href="http://librdf.org/rasqal/roqet.html">roqet</a> from the rasqal-utils package:</p>
 <code><pre>
 $ roqet places_in_which_glenn_gould_played.rq 
 
@@ -324,6 +328,7 @@ result: [place=uri&lt;http://dbpedia.org/resource/Ebell_of_Los_Angeles&gt;]
 roqet: Query returned 1 results
 
 </code></pre>
+<p>Or use <a href="http://sparql.org/sparql.html">sparql.org</a> (the file is at <a href="http://moustaki.org/resources/glenn_gould_performance.n3">http://moustaki.org/resources/glenn_gould_performance.n3</a>) - <a href="http://sparql.org/sparql?query=PREFIX+mo%3A+%3Chttp%3A%2F%2Fpurl.org%2Fontology%2Fmo%2F%3E%0D%0APREFIX+event%3A+%3Chttp%3A%2F%2Fpurl.org%2FNET%2Fc4dm%2Fevent.owl%23%3E%0D%0ASELECT+%3Fplace%0D%0AFROM+%3Chttp%3A%2F%2Fmoustaki.org%2Fresources%2Fglenn_gould_performance.n3%3E%0D%0AWHERE+{%0D%0A%3Fperformance%0D%0A++mo%3Aperformer+%3Chttp%3A%2F%2Fdbpedia.org%2Fresource%2FGlenn_Gould%3E+%3B%0D%0A++event%3Aplace+%3Fplace%0D%0A}%0D%0A&default-graph-uri=&output=xml&stylesheet=%2Fxml-to-html.xsl">results</a></p>
 </div>
 
 <div id="handson-1-10" class="slide big">
@@ -337,25 +342,13 @@ roqet: Query returned 1 results
 <li>Annotations of an audio signal</li>
 <li>Events happening during a performance or a recording</li>
 <li>Symbolic information</li>
-<li>Alignements between multiple timelines</li>
 <li><a href="http://wiki.musicontology.com/index.php/Examples">More examples</a></li>
-</ul>
-</div>
-
-<div id="mo-extensions" class="slide">
-<h1>Music Ontology extensions</h1>
-<p>Multiple extensions, to deal with:</p>
-<ul>
-<li><a href="http://purl.org/ontology/similarity/">Music similarity</a></li>
-<li><a href="http://purl.org/ontology/chord/">Chords</a> and <a href="http://purl.org/ontology/tonality/">keys</a></li>
-<li><a href="http://motools.sourceforge.net/af/">Audio features</a></li>
-<li><a href="http://purl.org/ontology/mo/mit/">Instrument taxonomy</a></li>
-<li><a href="http://purl.org/ontology/symbolic-music/">Symbolic information</a></li>
 </ul>
 </div>
 
 <div id="mo-examples-4" class="slide">
 <h1>Structural annotations (1)</h1>
+<p><a href="http://dbtune.org/musicbrainz/resource/signal/eb20ee61-414f-4eee-8dce-190db516a466">Can't buy me love</a>
 <p class=""> 
 <pre><code>
 :signal owl:sameAs &lt;http://dbtune.org/musicbrainz/resource/
@@ -453,6 +446,18 @@ roqet: Query returned 1 results
 </code></pre>
 </p>
 <p><a href="http://motools.svn.sourceforge.net/viewvc/motools/so/examples/syrinx.n3?revision=372">Full example</a></p>
+</div>
+
+<div id="mo-extensions" class="slide">
+<h1>Music Ontology extensions</h1>
+<p>Multiple extensions, to deal with:</p>
+<ul>
+<li><a href="http://purl.org/ontology/similarity/">Music similarity</a></li>
+<li><a href="http://purl.org/ontology/chord/">Chords</a> and <a href="http://purl.org/ontology/tonality/">keys</a></li>
+<li><a href="http://motools.sourceforge.net/af/">Audio features</a></li>
+<li><a href="http://purl.org/ontology/mo/mit/">Instrument taxonomy</a></li>
+<li><a href="http://purl.org/ontology/symbolic-music/">Symbolic information</a></li>
+</ul>
 </div>
 
 <div id="mo-available-data" class="slide">
