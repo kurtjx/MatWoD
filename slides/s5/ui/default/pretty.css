@@ -40,7 +40,9 @@ html, body {margin: 0; padding: 0;}
 	margin: 1.2em;
 }
 
-
+blockquote em {
+        background: yellow;
+}
 
 blockquote, q {font-style: italic;}
 blockquote {padding: 0 2em 0.5em; margin: 0 1.5em 0.5em; text-align: center; font-size: 1em;}

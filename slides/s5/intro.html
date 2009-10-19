@@ -4,20 +4,21 @@
   <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<title>An introduction to linked data</title>
-    <!-- metadata -->
+    
     <meta name="generator" content="S5" />
     <meta name="version" content="S5 1.1" />
     <meta name="presdate" content="20091026" />
     <meta name="author" content="Michael Smethurst" />
     <meta name="company" content="BBC" />
-    <!-- configuration parameters -->
+    
     <meta name="defaultView" content="slideshow" />
     <meta name="controlVis" content="hidden" />
-    <!-- style sheet links -->
     <link rel="stylesheet" href="ui/default/slides.css" type="text/css" media="projection" id="slideProj" />
     <link rel="stylesheet" href="ui/default/outline.css" type="text/css" media="screen" id="outlineStyle" />
     <link rel="stylesheet" href="ui/default/print.css" type="text/css" media="print" id="slidePrint" />
-    <link rel="stylesheet" href="ui/default/opera.css" type="text/css" media="projection" id="operaFix" />
+    <link rel="stylesheet" href="ui/default/opera.css" type="text/css" media="projection" id="operaFix" />   
+ 
+    
     <!-- embedded styles -->
     <style type="text/css" media="all">
       .imgcon {width: 525px; margin: 0 auto; padding: 0; text-align: center;}
@@ -28,13 +29,13 @@
       img#me04 {top: 44px;}
       img#me05 {top: 43px;left: 36px;}
     </style>
-    <!-- S5 JS -->
     <script src="ui/default/slides.js" type="text/javascript"></script>
+    
   </head>
   <body>
     <div class="layout">
-      <div id="controls"><!-- DO NOT EDIT --></div>
-      <div id="currentSlide"><!-- DO NOT EDIT --></div>
+      <div id="controls"></div>
+      <div id="currentSlide"></div>
       <div id="header"></div>
       <div id="footer">
 	    <h2>An introduction to linked data</h2>
@@ -94,7 +95,7 @@
 	  <div class="slide">
         <h2>We tend to obsess on the documents:</h2>
         <ul class="incremental">
-          <li>"Semantic" HTML</li>
+          <li>&quot;Semantic&quot; HTML</li>
           <li>HTML, HTML2, HTML3, HTML4, XHTML, HTML5...</li>
 		  <li>DOM</li>
 		  <li>?Flash?</li>
@@ -137,23 +138,6 @@
 	  </div>
 	  <div class="slide big">
 		<h2>The web = the internet + http <span class="small">+ html</span></h2>
-	  </div>
-	  <div class="slide title">
-		<h2>&lt;aside&gt;</h2>
-	  </div>
-	  <div class="slide">
-        <h2>On SEO (sorry)</h2>
-        <ul class="incremental">
-          <li>in the days of Alta Vista and Yahoo! mk 1 search was all about documents</li>
-		  <li>metatags...</li>
-		  <li>...and keyword density</li>
-		  <li>Google changed the game with PageRank by making search...</li>
-		  <li>...less about keyword density...</li>
-		  <li>...and more about link density</li>
-        </ul>
-      </div>
-	  <div class="slide title">
-		<h2>&lt;/aside&gt;</h2>
 	  </div>
 	  <div class="slide big">
 		<h2>Magazines are made of pages....</h2>
@@ -204,9 +188,6 @@
 		  <li>before we go any further...</li>
         </ul>
 	  </div>
-	  <div class="slide title">
-		<h2>&lt;aside&gt;</h2>
-	  </div>
 	  <div class="slide">
         <h2>RDF</h2>
         <ul class="incremental">
@@ -219,9 +200,6 @@
 		  <li>or even json</li>
         </ul>
       </div>
-	  <div class="slide title">
-		<h2>&lt;/aside&gt;</h2>
-	  </div>
 	  <div class="slide title">
 		<h2>The RDF data model</h2>
 	  </div>
@@ -275,10 +253,10 @@
 		<h2>Semweb mk 1 = the internet<span class="small"> + http</span> + rdf</h2>
 	  </div>
 	  <div class="slide title">
-		<h2>&lt;yet_another_aside&gt;</h2>
+		<h2>REST</h2>
 	  </div>
 	  <div class="slide">
-		<h2>On REST</h2>
+		<h2>REST</h2>
         <ul class="incremental">
           <li>described by Roy Fielding</li>
 		  <li>about the proper use of HTTP (post, get, put, delete)</li>
@@ -328,23 +306,6 @@
 	  <div class="slide">
 		<h2>Content negotiation - what I'm not given</h2>
         <p><img src="images/conneg4.png" height="450" width="749" alt="I've got that resource but can only do French. 406" /></p>
-	  </div>
-	  <div class="slide">
-		<h2>An honorary mention for <q>One Web</q></h2>
-        <ul class="incremental">
-          <li><q>The Web is designed as a universal space. Its universality is its most important facet. I spend many hours giving talks just to emphasize this point. The success of the Web stems from its universality as do most of the architectural constraints.</q> #timbl</li>
-		  <li>So one URI per resource; many representations per resource</li>
-		  <li>Mobile demands a different representation...</li>
-		  <li>...but not a different resource...</li>
-		  <li>...and not a different URI</li>
-		  <li>so no mobile. or .mobi etc</li>
-		</ul>
-	  </div>
-	  <div class="slide big">
-		<h2>If you can point at something you can talk about it and share it... universally</h2>
-	  </div>
-	  <div class="slide title">
-		<h2>&lt;/yet_another_aside&gt;</h2>
 	  </div>
 	  <div class="slide title">
 		<h2>Back to linked data</h2>
@@ -416,29 +377,6 @@
 	  <div class="slide">
 		<h2>What happens if someone asks for a non-information resource?</h2>
         <p><img src="images/303_2.png" height="450" width="749" alt="Yves will not fit down the wires but (303) I can give you some information about him in English" /></p>
-	  </div>
-	  <div class="slide title">
-		<h2>Comparing the microformats and linked data approaches</h2>
-	  </div>
-	  <div class="slide">
-		<h2>Given 2 websites...</h2>
-        <p><img src="images/2sites.png" height="445" width="492" alt="One about Michael, the other about Factory Records" /></p>
-	  </div>
-	  <div class="slide">
-		<h2>The microformats approach: XFN @rel</h2>
-        <p><img src="images/xfn.png" height="445" width="492" alt="rel=muse" /></p>
-	  </div>
-	  <div class="slide">
-		<h2>The linked data approach: 2 new non-information resources...</h2>
-        <p><img src="images/nirs.png" height="445" width="492" alt="one for Michael, one for Factory Records" /></p>
-	  </div>
-	  <div class="slide">
-		<h2>...each with a homepage...</h2>
-        <p><img src="images/homepage.png" height="445" width="492" alt="via foaf:homepage" /></p>
-	  </div>
-	  <div class="slide">
-		<h2>...tying together the 2 people, not the 2 documents</h2>
-        <p><img src="images/interest.png" height="445" width="492" alt="via foaf:interest" /></p>
 	  </div>
 	  <div class="slide title">
 		<h2>Designing URIs for non-information resources</h2>
@@ -606,8 +544,8 @@
 	  </div>
 	
 	<div class="slide">
-		<h1>and now...</h1>
-		<p>Let's learn about <a href="sparqlttl.html">Turtle and SPARQL</a></p>
+		<h1>And now...</h1>
+		<p>...let's learn about <a href="sparqlttl.html">Turtle and SPARQL</a></p>
 	</div>
 	  
 	</div>
