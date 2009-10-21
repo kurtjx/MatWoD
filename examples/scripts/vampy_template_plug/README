@@ -44,9 +44,11 @@ Solaris		vampy.so		/usr/local/lib/vamp
 
 More info: http://www.vamp-plugins.org/download.html#install
 
-1.c Place the example plugin to the same directory, or
-alternatively to any of your choice and export the environment
-variable:
+
+1.c Place the example plugin to the same directory. 
+
+Alternatively you can put vampy plugins somewhere else and 
+export the environment variable VAMPY_EXTPATH e.g.:
 export VAMPY_PATH="/your/vampy/plugin/directory"
 
                                
