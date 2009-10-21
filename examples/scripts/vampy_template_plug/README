@@ -1,0 +1,340 @@
+This is a small help file explaining how to create an RDF 
+file using your own feature extraction algorithm.
+
+
+Requirements:
+=============
+
+Sonic Annotator:
+http://www.omras2.org/SonicAnnotator/
+
+Python 2.5 or 2.6 with NumPy 1.1 or greater.
+http://www.python.org/
+http://www.numpy.org/
+
+Vampy:
+http://www.vamp-plugins.org/vampy.html
+
+VamPyTemplatePlug.py :
+http://github.com/kurtjx/MatWoD/blob/master/examples/scripts/vampy_template_plug/VamPyTemplate.py
+
+
+Optional:
+=========
+Sonic Visualiser 
+http://www.sonicvisualiser.com/
+                      
+
+
+1. Getting Started
+==================
+Download required software above for your platform.
+
+1a. Unzip the Sonic Annotator package and place it in a diractory
+of your choice.
+
+1b. Unzip the Vampy package and place it in one of the Vamp plugin
+install locations:
+
+File extension				System plugin folder	
+Linux		vampy.so		/usr/local/lib/vamp			
+OS/X		vampy.dylib		/Library/Audio/Plug-Ins/Vamp	
+Windows		vampy.dll		C:\Program Files\Vamp Plugins	 
+Solaris		vampy.so		/usr/local/lib/vamp	
+
+More info: http://www.vamp-plugins.org/download.html#install
+
+1.c Place the example plugin to the same directory, or
+alternatively to any of your choice and export the environment
+variable:
+export VAMPY_PATH="/your/vampy/plugin/directory"
+
+                               
+
+2. Testing Sonic Annotator and the available plugins
+====================================================
+
+List the available plugins using the command:
+sonic-annotator -l
+
+you should be able to see the line in the results:
+vamp:vampy:vampy-unique-ID:vampy-unique-outputID
+
+This is a unique identifier of the only output of the
+example plugin. You should replace 
+'vampy-unique-ID' and 'vampy-unique-outputID'
+with an ID of your choice in the plugin code.
+
+
+
+3. Writing your first Vamp plugin
+=================================
+
+3a. Using your favourite text editor, open the file VamPyTemplatePlug.py
+and replace the string in the following functions with an ID of
+your choice:
+
+def getIdentifier(self):
+	return 'vampy-unique-ID'
+
+def getOutputDescriptors(self):
+	Generic.identifier = 'vampy-unique-outputID'
+
+If you run Sonic Annotator again, you should be able
+to see the newly created plugin IDs in the output.
+Change your name etc...
+
+
+3b. The example plugin returns the energy computed from
+the magnitude spectrum for each processing block.
+This computation is performed in the process() function.
+
+def process(self,inputbuffers,timestamp):
+
+	fftsize = self.m_blockSize
+	sampleRate = self.m_inputSampleRate
+	complexSpectrum =  inputbuffers[0]
+	magnitudeSpectrum = abs(complexSpectrum) / (fftsize*0.5)
+	
+	tpower = sum(magnitudeSpectrum)
+
+
+Modify this function using an algorithm of your choice,
+or use the example provided here.
+
+
+
+
+4. Writing a simple onset detector:
+====================================
+
+We will create a very simple onset detector using 
+High Frequency Content.
+
+4a. Create a weighting function in process()
+--------------------------------------------
+
+def process(self,inputbuffers,timestamp):
+
+	length = self.m_blockSize * 0.5 + 1
+	sampleRate = self.m_inputSampleRate
+	
+	#weighting function
+	w = array(xrange(length)) / length
+
+
+4b. Detection function and peak picking:
+----------------------------------------
+
+def process(self,inputbuffers,timestamp):
+
+	[...]    
+	
+	complexSpectrum =  inputbuffers[0]
+	magnitudeSpectrum = abs(complexSpectrum) / length
+	
+	magnitudeSpectrum = magnitudeSpectrum * w
+	
+	tpower = sum(magnitudeSpectrum)
+	peak = False
+	greater = False
+	if tpower > self.prev :
+		greater = True
+
+	if tpower > self.threshold : 
+		if self.wasGreater and not greater :
+			peak = True
+
+
+4c. Return the onset times and store previous values:
+-----------------------------------------------------
+
+def process(self,inputbuffers,timestamp):
+	
+	[...]
+	
+	# return features in a FeatureSet()
+	output_featureSet = FeatureSet()
+			
+	if peak :
+		output_featureSet[0] = Feature()
+		output_featureSet[0].timestamp = self.prevTime
+		output_featureSet[0].hasTimestamp = True
+		
+	# store previous values for the next process	
+	self.prev = tpower
+	self.wasGreater = greater
+	self.prevTime = timestamp
+
+	return output_featureSet
+
+
+4d. Do some house-keeping:
+--------------------------
+
+in the __init__() function add: 
+
+self.prev = 0.0
+self.wasGreater = False
+self.prevTime = 0
+
+
+in getOutputDescriptors() modify:
+
+Generic.hasFixedBinCount=True
+Generic.binCount=0
+Generic.sampleType = VariableSampleRate
+
+
+
+That's all!
+
+
+
+5. Generate RDF using Sonic Annotator
+=====================================
+
+Grab an audio file and type
+
+$ sonic-annotator -d vamp:vampy:yourID:yourOutputID audio_file.wav -w rdf --rdf-stdout > onsets.n3
+
+where yourID:yourOutputID are the IDs you used for your plugin.
+
+
+if you haven't changed the IDs try:
+./sonic-annotator -d vamp:vampy:vampy-unique-ID:vampy-unique-outputID \
+/music-test-wav.wav -w rdf --rdf-stdout > /onsets.n3
+
+
+
+6. Load the results in Sonic Visualiser:
+========================================
+
+
+Open the audio file.
+(File->Import Audio File)
+
+Load the onset detection results:
+(File->Import Annotation Layer)
+choose RDF, then onsets.n3
+
+Overlay the results for the audio:
+(Layer->Add Existing Layer->Instants)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+CHEAT CHEAT CHEAT:
+==================
+
+Here's the completed process function:
+
+def process(self,inputbuffers,timestamp):
+
+	length = self.m_blockSize * 0.5 + 1
+	sampleRate = self.m_inputSampleRate
+	
+	w = array(xrange(length)) / length
+
+	complexSpectrum =  inputbuffers[0]
+	magnitudeSpectrum = abs(complexSpectrum) / length
+	
+	magnitudeSpectrum = magnitudeSpectrum * w
+	
+
+	tpower = sum(magnitudeSpectrum)
+	peak = False
+	greater = False
+	if tpower > self.prev :
+		greater = True
+
+	if tpower > self.threshold : 
+		if self.wasGreater and not greater :
+			peak = True
+			
+	output_featureSet = FeatureSet()
+			
+	if peak :
+		output_featureSet[0] = Feature()
+		output_featureSet[0].timestamp = self.prevTime
+		output_featureSet[0].hasTimestamp = True
+		
+	self.prev = tpower
+	self.wasGreater = greater
+	self.prevTime = timestamp
+
+	return output_featureSet
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

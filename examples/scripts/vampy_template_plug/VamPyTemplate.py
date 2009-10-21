@@ -105,11 +105,11 @@ class VamPyTemplate:
 
 	def process(self,inputbuffers,timestamp):
 		# this is where we compute the features
-		fftsize = self.m_blockSize
+		length = self.m_blockSize * 0.5 + 1
 		sampleRate = self.m_inputSampleRate
 
 		complexSpectrum =  inputbuffers[0]
-		magnitudeSpectrum = abs(complexSpectrum) / (fftsize*0.5)
+		magnitudeSpectrum = abs(complexSpectrum) / length
 		
 		# return features in a FeatureSet()
 		output_featureSet = FeatureSet()
@@ -119,6 +119,6 @@ class VamPyTemplate:
 		if tpower > self.threshold : 
 			output_featureSet[0] = Feature(tpower)
 		else :
-			output_featureSet[0] = 0
+			output_featureSet[0] = Feature(0)
 			
 		return output_featureSet

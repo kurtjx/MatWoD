@@ -630,14 +630,14 @@
 <p>(1) Create an RDF transform skeleton:</p>
 <p class="">
 <pre><code>
-$ sonic-annotator -s vamp:vamp-example-plugins:fixedtempo:tempo
+$ sonic-annotator -s vamp:vamp-example-plugins:fixedtempo:tempo > test.n3
+
 </code></pre>
 </p>
 <p>(2) Edit the file if necessary and run the feature extractor:</p>
 <p class="">
 <pre><code>
-$ sonic-annotator -d vamp:vamp-example-plugins:fixedtempo:tempo \
--w rdf --rdf-stdout audio_file.wav
+$ sonic-annotator -t test.n3 audio_file.wav -w rdf --rdf-stdout
 </code></pre>
 </p>
 <p>This will dump the results on the standard output.</p>
