@@ -1,0 +1,34 @@
+This is a toy sparql-endpoint written in Python.
+
+Requirements:
+
+rdflib  (rdf library)
+cherrypy (web server)
+
+
+Use:
+
+1. Run sparqlEndpoint.py
+
+in the terminal type:
+$ python sparqlEndpoint.py
+
+This will load trout_quintet.n3 into the store
+(plus some trivial example included in the python script)
+and create a SPARQL-endpoint on localhost:8081.
+
+You should see the web service engine starting.
+
+
+2. in another terminal window, run the query:
+
+$ python queryExample.py
+
+A trivial query grabs all literals of the predicate 'dc:title'.
+
+If all is well you should see (among others):
+
+Recording of the LSO performing the Trout Quintet
+Trout Quintet, performed by the LSO, on 'Favorite Classics'
+Trout Quintet, performed by the London Symphony Orchestra
+Franz Schubert's Trout Quintet

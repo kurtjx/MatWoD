@@ -1,0 +1,25 @@
+@prefix mo: <http://purl.org/ontology/mo/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix : <#> .
+ 
+:work
+    a mo:MusicalWork ;
+    dc:title "Franz Schubert's Trout Quintet" .
+ 
+:performance
+    a mo:Performance ;
+    dc:title "Trout Quintet, performed by the London Symphony Orchestra" ;
+    mo:performance_of :work ;
+    mo:performer <http://dbpedia.org/resource/London_Symphony_Orchestra> ;
+    mo:recorded_as [
+        a mo:Signal ;
+        mo:published_as :track1 ;
+        dc:title "Recording of the LSO performing the Trout Quintet" ;
+    ] .
+ 
+:track1
+    a mo:Track ;
+    mo:track_number 5 ;
+    owl:sameAs <http://dbtune.org/musicbrainz/resource/track/3208fbce-c20f-4362-a3d5-5405ac1904bd> ;
+    dc:title "Trout Quintet, performed by the LSO, on 'Favorite Classics'" .
