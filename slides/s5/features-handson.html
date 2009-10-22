@@ -1,0 +1,288 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" 
+    "http://www.w3.org/MarkUp/DTD/xhtml-rdfa-1.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" 
+      xmlns:doap="http://usefulinc.com/ns/doap#"
+      xmlns:dct="http://purl.org/dc/terms/"
+      xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+      xml:lang="en" lang="en" dir="ltr"
+      xmlns:dc="http://purl.org/dc/elements/1.1/"
+      xmlns:foaf="http://xmlns.com/foaf/0.1/"
+      xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+
+<head profile="http://ns.inria.fr/grddl/rdfa/">
+<title>Music and the Web of Data</title>
+<!-- metadata -->
+<meta name="generator" content="S5" />
+<meta name="version" content="S5 1.1" />
+<meta name="presdate" content="20091026" />
+<meta name="author" content="Matwod Team" />
+<meta name="company" content="Queen Mary University of London and BBC" />
+<!-- configuration parameters -->
+<meta name="defaultView" content="slideshow" />
+<meta name="controlVis" content="hidden" />
+<!-- style sheet links -->
+<link rel="stylesheet" href="ui/default/slides.css" type="text/css" media="projection" id="slideProj" />
+<link rel="stylesheet" href="ui/default/outline.css" type="text/css" media="screen" id="outlineStyle" />
+<link rel="stylesheet" href="ui/default/print.css" type="text/css" media="print" id="slidePrint" />
+<link rel="stylesheet" href="ui/default/opera.css" type="text/css" media="projection" id="operaFix" />
+<!-- S5 JS -->
+<script src="ui/default/slides.js" type="text/javascript"></script>
+</head>
+<body>
+
+<div class="layout">
+<div id="controls"><!-- DO NOT EDIT --></div>
+<div id="currentSlide"><!-- DO NOT EDIT --></div>
+<div id="header"></div>
+<div id="footer">
+<h1>ISMIR 2009 Kobe Japan</h1>
+<h2>Share and Share alike - You can say anything about Music on the Web of Data</h2>
+</div>
+</div>
+
+
+<div class="presentation">
+
+<div id="features-handson-title" class="slide">
+<h3>RDF-ize your algorithm</h3>
+<h2>Using a VamPy and Sonic Annotator</h2>
+</div>
+
+
+<div id="fhandson00" class="slide">
+<h1>Requirements</h1>
+<p>You need to have the following stuff installed</p>
+<ul>
+	<li><a href="http://www.omras2.org/SonicAnnotator/">Sonic Annotator</a></li>
+	<li><a href="http://www.python.org/">Python 2.5 or 2.6</a></li>
+	<li><a href="http://www.numpy.org/">NumPy 1.1 or greater</a></li>
+	<li><a href="http://www.vamp-plugins.org/vampy.html">VamPy 2.0</a></li>
+	<li><a href="http://github.com/kurtjx/MatWoD/blob/master/examples/scripts/vampy_template_plug/VamPyTemplate.py">VamPyTemplatePlug.py</a></li>
+	</ul>
+	<p>Optional:</p>
+<ul>
+	<li><a href="http://www.sonicvisualiser.com/">Sonic Visualiser</a></li>
+	</ul>
+
+</div>
+
+
+
+<div id="fhandson01" class="slide">
+	<h1>Getting Started</h1>
+	
+	<p>Download and install all required software for your platform.</p>
+    <ul>
+	<li>Unzip the Sonic Annotator package and place it in a directory
+	of your choice.</li>
+
+	<li>Unzip the Vampy package and place it in one of the Vamp plugin
+	install locations</li>
+	<ul>
+		<li>Linux: vampy.so -> /usr/local/lib/vamp</li>
+		<li>OS/X: vampy.dylib -> /Library/Audio/Plug-Ins/Vamp</li>
+		<li>Windows: vampy.dll -> C:\Program Files\Vamp Plugins</li>
+	</ul>
+</ul>
+
+<p><br><a href="http://www.vamp-plugins.org/download.html#install"> More info on installation</a></p>
+	
+</div>
+
+
+
+<div id="fhandson02" class="slide">
+	<h1>Test Vamp Plugins</h1>
+	<p>Sonic Annotator should find any Vamp/VamPy plugins correctly installed</p>
+<pre><code>
+	$ sonic-annotator -l
+</code></pre>
+This should return at least:
+<pre><code>
+	vamp:vampy:vampy-unique-ID:vampy-unique-outputID
+</code></pre>
+<p>This is a unique identifier of the only output of the
+example plugin. <br>You should replace 
+'vampy-unique-ID' and 'vampy-unique-outputID'
+with an ID of your choice in the plugin code.</p>
+
+</div>
+
+
+
+<div id="fhandson03" class="slide">
+	<h1>Writing your first Vamp plugin</h1>
+
+	<p>Using your favourite text editor, open the file VamPyTemplatePlug.py
+	and replace the string in the following functions with an ID of
+	your choice:</p>
+
+<pre><code>
+	def getIdentifier(self):
+		return 'vampy-unique-ID'
+</code></pre>
+<pre><code>
+	def getOutputDescriptors(self):
+		Generic.identifier = 'vampy-unique-outputID'
+</code></pre>
+
+<p>If you run Sonic Annotator again, you should be able
+	to see the newly created plugin IDs in the output.
+	You may also want to change your name etc...</p>
+</div>
+
+
+
+<div id="fhandson04" class="slide">
+	<h1>Writing your first Vamp plugin</h1>
+
+	<p>The example plugin returns the energy computed from
+	the normalised magnitude spectrum for each processing block.
+	This computation is performed in the process() function.</p>
+<pre><code>
+	def process(self,inputbuffers,timestamp):
+		length = self.m_blockSize * 0.5 + 1
+		sampleRate = self.m_inputSampleRate
+		complexSpectrum =  inputbuffers[0]
+		magnitudeSpectrum = abs(complexSpectrum) / length
+
+		tpower = sum(magnitudeSpectrum)
+</code></pre>
+
+
+<p>Modify this function using an algorithm of your choice,
+	or use the example provided next.</p>
+
+</div>
+
+
+<div id="fhandson05" class="slide">
+	<h1>Writing a simple onset detector</h1>
+
+<p>We will create a very simple onset detector using 
+	High Frequency Content.</p>
+
+	<p>Create a weighting function in process()</p>
+
+<pre><code>
+	def process(self,inputbuffers,timestamp):
+
+		length = self.m_blockSize * 0.5 + 1
+		sampleRate = self.m_inputSampleRate
+
+		#weighting function
+		w = array(xrange(length)) / length
+</code></pre>
+
+</div>
+
+
+<div id="fhandson06" class="slide">
+	<h1>Writing a simple onset detector</h1>
+<p>Detection function and peak picking:</p>
+<pre><code><small>
+	def process(self,inputbuffers,timestamp):
+		...
+		complexSpectrum =  inputbuffers[0]
+		weightedSpectrum = w * (abs(complexSpectrum) / length)
+		tpower = sum(weightedSpectrum)
+		peak = False
+		greater = False
+		if tpower > self.prev :
+			greater = True
+		if tpower > self.threshold : 
+			if self.wasGreater and not greater :
+				peak = True
+</small></code></pre>
+</div>
+
+
+<div id="fhandson07" class="slide">
+	<h1>Writing a simple onset detector</h1>
+<p>Return the onset times and store previous values</p>
+<pre><code><small>
+	def process(self,inputbuffers,timestamp):
+		...
+		output_featureSet = FeatureSet()
+		if peak :
+			output_featureSet[0] = Feature()
+			output_featureSet[0].timestamp = self.prevTime
+			output_featureSet[0].hasTimestamp = True
+		# store previous values for the next process	
+		self.prev = tpower
+		self.wasGreater = greater
+		self.prevTime = timestamp
+		return output_featureSet
+</small></code></pre>
+</div>
+
+
+<div id="fhandson08" class="slide">
+	<h1>Writing a simple onset detector</h1>
+<p>Do some house-keeping:</p>
+<p>in the __init__() function add:</p>
+<pre><code>
+self.prev = 0.0
+self.wasGreater = False
+self.prevTime = 0
+</code></pre>
+</div>
+
+
+<div id="fhandson09" class="slide">
+	<h1>Writing a simple onset detector</h1>
+<p>Do some house-keeping:</p>
+<p>in getOutputDescriptors() modify:</p>
+<pre><code>
+Generic.hasFixedBinCount=True
+Generic.binCount=0
+Generic.sampleType = VariableSampleRate
+</code></pre>
+</div>
+
+
+<div id="fhandson10" class="slide">
+	<h1>Using Sonic Annotator</h1>
+<p><center><large>That's All!</large></center></p>
+<p><center><large><br><br>Now Create some RDF!</large></center></p>
+</div>
+
+
+<div id="fhandson11" class="slide">
+	<h1>Using Sonic Annotator</h1>
+<p>Grab an audio file and type</p>
+<pre><code>
+$ sonic-annotator -d vamp:vampy:yourID:yourOutputID audio_file.wav \
+<br> -w rdf --rdf-stdout > onsets.n3
+</code></pre>
+<p>where yourID:yourOutputID are the IDs you used for your plugin.</p>
+<p><small>
+if you haven't changed the IDs you may try:
+<pre><code>
+./sonic-annotator -d vamp:vampy:vampy-unique-ID:vampy-unique-outputID \
+/audio-file.wav -w rdf --rdf-stdout > onsets.n3
+</code></pre>
+</small>
+</div>
+
+
+<div id="fhandson12" class="slide">
+	<h1>Sonic Visualiser</h1>
+<p>Now load the RDF into Sonic Visualiser:</p>
+<ul>
+	<li>Open the audio file.
+		<br>(File->Import Audio File)</li>
+
+		<li>Load the onset detection results:
+			<br>(File->Import Annotation Layer)
+			choose RDF, then onsets.n3</li>
+
+	<li>Overlay the results on the audio:
+		<br>(Layer->Add Existing Layer->Instants)</li>
+</ul>
+</div>
+
+
+</body>
+</html>

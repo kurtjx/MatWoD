@@ -134,10 +134,9 @@ def process(self,inputbuffers,timestamp):
 	
 	complexSpectrum =  inputbuffers[0]
 	magnitudeSpectrum = abs(complexSpectrum) / length
+	weightedSpectrum = magnitudeSpectrum * w
 	
-	magnitudeSpectrum = magnitudeSpectrum * w
-	
-	tpower = sum(magnitudeSpectrum)
+	tpower = sum(weightedSpectrum)
 	peak = False
 	greater = False
 	if tpower > self.prev :
@@ -294,10 +293,7 @@ def process(self,inputbuffers,timestamp):
 	w = array(xrange(length)) / length
 
 	complexSpectrum =  inputbuffers[0]
-	magnitudeSpectrum = abs(complexSpectrum) / length
-	
-	magnitudeSpectrum = magnitudeSpectrum * w
-	
+	weightedSpectrum = w * (abs(complexSpectrum) / length)
 
 	tpower = sum(magnitudeSpectrum)
 	peak = False
