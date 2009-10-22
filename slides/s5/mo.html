@@ -354,7 +354,7 @@ roqet: Query returned 1 results
 :signal owl:sameAs &lt;http://dbtune.org/musicbrainz/resource/
                         signal/eb20ee61-414f-4eee-8dce-190db516a466&gt;.
 :signal mo:time [
-     tl:duration "PT2M14S";
+     tl:duration "PT2M14S"^^xsd:duration;
      tl:timeline :tl;
   ].
 </code></pre>
@@ -369,16 +369,16 @@ roqet: Query returned 1 results
      rdfs:label "First chorus";
      event:time [
         tl:timeline :tl;
-        tl:start "PT0S";
-        tl:duration "PT9S";
+        tl:start "PT0S"^^xsd:duration;
+        tl:duration "PT9S"^^xsd:duration;
      ].
 
 :verse1 a ps:Verse;
      rdfs:label "First verse";
      event:time [
         tl:timeline :tl;
-        tl:start "PT9S";
-        tl:duration "PT33S";
+        tl:start "PT9S"^^xsd:duration;
+        tl:duration "PT33S"^^xsd:duration;
      ].
 </code></pre>
 </p>
