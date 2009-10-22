@@ -256,7 +256,7 @@ Generic.sampleType = VariableSampleRate
 $ sonic-annotator -d vamp:vampy:yourID:yourOutputID audio_file.wav \
 <br> -w rdf --rdf-stdout > onsets.n3
 </code></pre>
-<p>where yourID:yourOutputID are the IDs you used for your plugin.</p>
+<p>where <b><i>yourID</i></b> and <b><i>yourOutputID</i></b> are the IDs you used for your plugin.</p>
 <p><small>
 if you haven't changed the IDs you may try:
 <pre><code>
@@ -271,16 +271,17 @@ if you haven't changed the IDs you may try:
 	<h1>Sonic Visualiser</h1>
 <p>Now load the RDF into Sonic Visualiser:</p>
 <ul>
-	<li>Open the audio file.
-		<br>(File->Import Audio File)</li>
+	<li>Open the audio file:
+		<br> (File->Import Audio File)</li>
 
 		<li>Load the onset detection results:
-			<br>(File->Import Annotation Layer)
+			<br> (File->Import Annotation Layer)
 			choose RDF, then onsets.n3</li>
 
 	<li>Overlay the results on the audio:
-		<br>(Layer->Add Existing Layer->Instants)</li>
+		<br> (Layer->Add Existing Layer->Instants)</li>
 </ul>
+<p>You should see the onsets! Press Play!</p>
 </div>
 
 
