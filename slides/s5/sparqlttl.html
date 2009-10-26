@@ -389,6 +389,24 @@ for binding in response.bindings:
 		 for a listing of more endpoints</h2>
 </div>
 
+<div id="errata" class="slide">
+	<h1>Warning!</h1>
+	<p>In your handout - there are two example queries</p>
+	<p>the second query uses blank nodes <code>[]</code> and a <code>UNION</code> statement to select
+		all the properties and classes contained in an endpoint</p>
+	<p>while this <em>is</em> a valid query, it will cause most endpoints to choke because it is 
+		very expensive - better to break into two separate queries with limits</p>
+<pre><code>
+	SELECT DISTINCT ?type 
+	WHERE { [] a ?type . } LIMIT 10	
+	
+</code></pre>
+<pre><code>
+	SELECT DISTINCT ?prop
+	WHERE {} [] ?prop [] . } LIMIT 10
+	
+</code></pre>
+
 
 <div id="take-away" class="slide big">
 	<p class="">with SPARQL</p>
